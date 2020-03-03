@@ -1,7 +1,7 @@
 module PolicyIteration where
 
 import MDP --(MDP, StateSpace, Reward, Probability, Dynamics)
-import OptTools
+import OptTools (argMax, priorityOrFirst)
 
 import qualified Data.Map.Strict as Map
 import Data.Maybe
@@ -42,6 +42,11 @@ polError = error "lookup in policy map failed"
 
 type PolValueUpdate s a = Dynamics s a -> DiscountFactor -> Policy s a -> ValTable s -> s -> Value--for use in step 2 of policy iteration
 
+q_pi :: Dynamics s a -> DiscountFactor -> ValTable s -> s -> a -> Value --computes q_pi(s, a) assuming valTable gives v_pi(s)
+q_pi dynamics gamma vt state action = getSum $ foldMap f $ dynamics state $ action
+  where
+    f (s, r, p) = Sum $ (* p) $ (+ r) $ (* gamma) $ vt s
+
 policyEvaluation :: (Ord s) => Double -> MDPTask s a -> Policy s a -> ValTable s -> ValTable s --returns the values under pi
 policyEvaluation threshold (MDPTask (MDP states dynamics af) gamma) policy valTable = go valTable
   where
@@ -53,8 +58,7 @@ policyEvaluation threshold (MDPTask (MDP states dynamics af) gamma) policy valTa
     --for simplicity, this only ever uses the old value table when calculating new values, although better estimates could exist inside newVT (fix later)
     accumValues vt state (delta, newVT) = (newDelta, newMap)
       where
-        newVal = getSum $ foldMap f $ dynamics state $ policy state
-        f (s, r, p) = Sum $ (* p) $ (+ r) $ (* gamma) $ vt s
+        newVal = q_pi dynamics gamma vt state $ policy state
         oldVal = vt state
         newDelta = max delta $ abs $ newVal - oldVal
         newMap = Map.insert state newVal newVT
@@ -71,6 +75,8 @@ policyImprovement threshold tsk@(MDPTask (MDP states dynamics af) gamma) policy 
 
     accumActions evt pol state (stableOld, polMapSoFar) = (stableNew, newPolMap)
       where
+        oldAction = pol state
         newPolMap = Map.insert state newAction polMapSoFar--need to make sure tie-breaking favors old policy if applicable
-        newAction = undefined
-        stableNew = stableOld && ((pol state) == newAction)
+        newAction = fromMaybe (error "argMax returned Nothing") $ argMax (priorityOrFirst oldAction) qp $ af state
+        stableNew = stableOld && (oldAction == newAction)
+        qp = q_pi dynamics gamma evt state
