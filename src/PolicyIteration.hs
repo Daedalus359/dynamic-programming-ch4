@@ -1,6 +1,7 @@
 module PolicyIteration where
 
 import MDP --(MDP, StateSpace, Reward, Probability, Dynamics)
+import OptTools
 
 import qualified Data.Map.Strict as Map
 import Data.Maybe
@@ -68,7 +69,8 @@ policyImprovement threshold tsk@(MDPTask (MDP states dynamics af) gamma) policy 
 
     evaluatedVT = policyEvaluation threshold tsk
 
-    accumActions evt pol state (stableOld, polSoFar) = (stableNew, newPol)
+    accumActions evt pol state (stableOld, polMapSoFar) = (stableNew, newPolMap)
       where
-        newPol = undefined --need to make sure tie-breaking favors old policy if applicable
-        stableNew = stableOld && ((pol state) == (newPol state))
+        newPolMap = Map.insert state newAction polMapSoFar--need to make sure tie-breaking favors old policy if applicable
+        newAction = undefined
+        stableNew = stableOld && ((pol state) == newAction)
