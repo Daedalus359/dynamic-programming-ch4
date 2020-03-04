@@ -64,7 +64,7 @@ poissonMass lambda n = (fromIntegral $ lambda ^ n) * (eul_const ** (fromIntegral
 businessDynamics :: Dynamics EodState CarMoves --EodState -> CarMoves -> [(EodState, Reward, Probability)]
 businessDynamics eodState carsMoved = fmap (\(s, r, p) -> (s, r + transportReward, p)) $ salesDynamics morningState
   where
-    transportReward = fromIntegral $ abs carsMoved * carMoveReward --immediate reward (value is negative) of moving cars overnight
+    transportReward = fromIntegral $ abs carsMoved * carMoveReward --immediate reward (value is negative) of moving cars overnight --changes for the exercise variant of this problem
     morningState = overnightMove eodState carsMoved
 
 type MorningState = (Int, Int)
@@ -79,9 +79,20 @@ overnightMove (l1c, l2c) carsTo2
   --1 normal case, catches the transformed forms of all errors
   | otherwise = (l1c - carsTo2, l2c + carsTo2)
 
+rewardSalesDynamics :: MorningState 
+                    -> (Int, Probability) 
+                    -> (Int, Probability) 
+                    -> (Int, Probability) 
+                    -> (Int, Probability) 
+                    -> (EodState, Reward, Probability) --not the true reward, that also depends on costs spent moving cars overnight
+rewardSalesDynamics (carsM1, carsM2) (rentals1, p1) (rentals2, p2) (returns1, pp1) (returns2, pp2) = undefined
+
 --starting from the number of cars present in the morning, calculates dynamics for the sales and returns over the course of the day
 salesDynamics :: MorningState -> [(EodState, Reward, Probability)]
-salesDynamics (carsM1, carsM2) = undefined
+salesDynamics ms@(carsM1, carsM2) = rewardSalesDynamics ms <$> rentalsL1 <*> rentalsL2 <*> returnsL1 <*> returnsL2
   where
     rentalsL1 = capRentals carsM1 $ poisson lambda1_rentals
     rentalsL2 = capRentals carsM2 $ poisson lambda2_rentals
+
+    returnsL1 = poisson lambda1_returns
+    returnsL2 = poisson lambda2_returns
