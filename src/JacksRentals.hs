@@ -2,13 +2,42 @@ module JacksRentals where
 
 import MDP
 
+import Data.List (unfoldr)
+
+{-
+Exercise 4.7 and Example 4.2 from Reinforcement Learning: an Introduction, 2 ed, by Sutton and Barto
+-}
+
 type EodState = (Int, Int) --how many cars are in locations 1 and 2, respectively, at the end of the day?
 
-type CarMoves = Int --how many cars moved from location 1 to location 2 (negative for other direction)
+type CarMoves = Int --how many cars to move overnight from location 1 to location 2 (negative for other direction)
 
-carMoveCost = 2
+carMoveReward = negate 2
+
+lambda1_rentals = 3 --how many rentals expected at location 1 per day (poisson parameter)
+lambda2_rentals = 4
+
+lambda1_returns = 3 --how many returns expected loc 1 (poisson param)
+lambda2_returns = 2
+
+poissonThreshold = 0.9999 --how high must the total probability mass be before poisson stops listing possibilities?
+
+factorial :: Int -> Int
+factorial 0 = 1
+factorial n
+  | n > 0 = factorial (n - 1) * n
+  | n < 0 = error "factorial undefined for n < 0"
+
+eul_const = 2.71828
+
+poisson :: Int -> [(Int, Probability)]
+poisson lambda = unfoldr f 0 
+  where
+    f totalMass 
+      | totalMass > poissonThreshold = Nothing
+      | otherwise = undefined
 
 businessDynamics :: Dynamics EodState CarMoves --EodState -> CarMoves -> [(EodState, Reward, Probability)]
 businessDynamics eodState carsMoved = undefined
   where
-    transportCost = abs carsMoved * carMoveCost
+    transportCost = abs carsMoved * carMoveReward --immediate reward (value is negative) of moving cars overnight
