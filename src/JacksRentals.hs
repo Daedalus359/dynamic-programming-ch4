@@ -13,6 +13,7 @@ jacksMDP :: MDP EodState CarMoves
 jacksMDP = MDP eodStates businessDynamics validCarsToMove
 
 type EodState = (Int, Int) --how many cars are in locations 1 and 2, respectively, at the end of the day?
+--luckily, (Int, Int) already has an instance of Ord
 
 eodStates :: Set.Set EodState
 eodStates = Set.fromList $ (,) <$> [0 .. 20] <*> [0 .. 20]
