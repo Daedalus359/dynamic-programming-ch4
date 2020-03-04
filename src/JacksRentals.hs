@@ -28,14 +28,20 @@ factorial n
   | n > 0 = factorial (n - 1) * n
   | n < 0 = error "factorial undefined for n < 0"
 
+eul_const :: Double
 eul_const = 2.71828
 
 poisson :: Int -> [(Int, Probability)]
-poisson lambda = unfoldr f 0 
+poisson lambda = unfoldr f (0, 0) 
   where
-    f totalMass 
+    f (n, totalMass)
       | totalMass > poissonThreshold = Nothing
-      | otherwise = undefined
+      | otherwise = Just $ ((n, pMass), (n + 1, totalMass + pMass))
+        where pMass = poissonMass lambda n
+
+
+poissonMass :: Int -> Int -> Probability --PMF for poisson
+poissonMass lambda n = (fromIntegral $ lambda ^ n) * (eul_const ^ (negate lambda)) / (fromIntegral $ factorial n)
 
 businessDynamics :: Dynamics EodState CarMoves --EodState -> CarMoves -> [(EodState, Reward, Probability)]
 businessDynamics eodState carsMoved = undefined
