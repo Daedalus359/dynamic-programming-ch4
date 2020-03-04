@@ -37,7 +37,7 @@ factorial :: Int -> Int
 factorial 0 = 1
 factorial n
   | n > 0 = factorial (n - 1) * n
-  | n < 0 = error "factorial undefined for n < 0"
+  | n < 0 = error "factorial not defined for n < 0"
 
 eul_const :: Double
 eul_const = 2.71828
@@ -52,10 +52,26 @@ poisson lambda = unfoldr f (0, 0)
 
 
 poissonMass :: Int -> Int -> Probability --PMF for poisson
-poissonMass lambda n = (fromIntegral $ lambda ^ n) * (eul_const ^ (negate lambda)) / (fromIntegral $ factorial n)
+poissonMass lambda n = (fromIntegral $ lambda ^ n) * (eul_const ** (fromIntegral $ negate lambda)) / (fromIntegral $ factorial n)
 
 businessDynamics :: Dynamics EodState CarMoves --EodState -> CarMoves -> [(EodState, Reward, Probability)]
-businessDynamics eodState carsMoved = undefined
+businessDynamics eodState carsMoved = fmap (\(s, r, p) -> (s, r + transportReward, p)) $ salesDynamics morningState
   where
-    transportCost = abs carsMoved * carMoveReward --immediate reward (value is negative) of moving cars overnight
-    morningState = undefined
+    transportReward = fromIntegral $ abs carsMoved * carMoveReward --immediate reward (value is negative) of moving cars overnight
+    morningState = overnightMove eodState carsMoved
+
+type MorningState = (Int, Int)
+
+overnightMove :: EodState -> CarMoves -> MorningState
+overnightMove (l1c, l2c) carsTo2
+  --4 cases involve cars returning to national company or impossible actions
+  | l1c > 20 = overnightMove (20, l2c) carsTo2
+  | l2c > 20 = overnightMove (l1c, 20) carsTo2
+  | carsTo2 > l1c = overnightMove (l1c, l2c) l1c
+  | (negate carsTo2) > l2c = overnightMove (l1c, l2c) (negate l2c)
+  --1 normal case, catches the transformed forms of all errors
+  | otherwise = (l1c - carsTo2, l2c + carsTo2)
+
+--starting from the number of cars present in the morning, calculates dynamics for the sales and returns over the course of the day
+salesDynamics :: MorningState -> [(EodState, Reward, Probability)]
+salesDynamics (carsM1, carsM2) = undefined
