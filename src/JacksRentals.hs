@@ -50,6 +50,13 @@ poisson lambda = unfoldr f (0, 0)
       | otherwise = Just $ ((n, pMass), (n + 1, totalMass + pMass))
         where pMass = poissonMass lambda n
 
+--if there are only x cars, then all poisson probabilities for values >= x get lumped together under x
+capRentals :: Int -> [(Int, Probability)] -> [(Int, Probability)]
+capRentals limit [] = [] --this case will occur if the limit is higher than what can realistically be sold in a day (depends on lambda, may not actually appear)
+capRentals limit lst@(entry@(numSales, p) : rest)
+  | numSales < limit = (:) entry $ capRentals limit rest
+  | otherwise = [(numSales, sumProb)]
+    where sumProb = sum $ snd <$> lst
 
 poissonMass :: Int -> Int -> Probability --PMF for poisson
 poissonMass lambda n = (fromIntegral $ lambda ^ n) * (eul_const ** (fromIntegral $ negate lambda)) / (fromIntegral $ factorial n)
@@ -75,3 +82,6 @@ overnightMove (l1c, l2c) carsTo2
 --starting from the number of cars present in the morning, calculates dynamics for the sales and returns over the course of the day
 salesDynamics :: MorningState -> [(EodState, Reward, Probability)]
 salesDynamics (carsM1, carsM2) = undefined
+  where
+    rentalsL1 = capRentals carsM1 $ poisson lambda1_rentals
+    rentalsL2 = capRentals carsM2 $ poisson lambda2_rentals
