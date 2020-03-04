@@ -79,17 +79,17 @@ overnightMove (l1c, l2c) carsTo2
   --1 normal case, catches the transformed forms of all errors
   | otherwise = (l1c - carsTo2, l2c + carsTo2)
 
-rewardSalesDynamics :: MorningState 
+rewardSalesResult :: MorningState 
                     -> (Int, Probability) 
                     -> (Int, Probability) 
                     -> (Int, Probability) 
                     -> (Int, Probability) 
                     -> (EodState, Reward, Probability) --not the true reward, that also depends on costs spent moving cars overnight
-rewardSalesDynamics (carsM1, carsM2) (rentals1, p1) (rentals2, p2) (returns1, pp1) (returns2, pp2) = undefined
+rewardSalesResult (carsM1, carsM2) (rentals1, p1) (rentals2, p2) (returns1, pp1) (returns2, pp2) = undefined
 
 --starting from the number of cars present in the morning, calculates dynamics for the sales and returns over the course of the day
 salesDynamics :: MorningState -> [(EodState, Reward, Probability)]
-salesDynamics ms@(carsM1, carsM2) = rewardSalesDynamics ms <$> rentalsL1 <*> rentalsL2 <*> returnsL1 <*> returnsL2
+salesDynamics ms@(carsM1, carsM2) = rewardSalesResult ms <$> rentalsL1 <*> rentalsL2 <*> returnsL1 <*> returnsL2
   where
     rentalsL1 = capRentals carsM1 $ poisson lambda1_rentals
     rentalsL2 = capRentals carsM2 $ poisson lambda2_rentals
