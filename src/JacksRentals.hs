@@ -1,6 +1,7 @@
 module JacksRentals where
 
 import MDP
+import PolicyIteration
 
 import Data.List (unfoldr)
 import Data.Maybe (catMaybes)
@@ -12,6 +13,13 @@ Exercise 4.7 and Example 4.2 from Reinforcement Learning: an Introduction, 2 ed,
 
 jacksMDP :: MDP EodState CarMoves
 jacksMDP = MDP eodStates businessDynamics validCarsToMove
+
+jacksTask = MDPTask jacksMDP 0.9
+
+jacksFinalPolicy = policyImprovement 0.001 jacksTask jacksPolInit jacksVTInit
+
+jacksVTInit = initZeros eodStates
+jacksPolInit = initPolicy jacksMDP --does not initialize policy to always choose 0 as specified in problem, end result should be the same though
 
 type EodState = (Int, Int) --how many cars are in locations 1 and 2, respectively, at the end of the day?
 --luckily, (Int, Int) already has an instance of Ord
