@@ -3,6 +3,7 @@ module JacksRentals where
 import MDP
 
 import Data.List (unfoldr)
+import Data.Maybe (catMaybes)
 import qualified Data.Set as Set
 
 {-
@@ -23,6 +24,7 @@ type CarMoves = Int --how many cars to move overnight from location 1 to locatio
 validCarsToMove :: EodState -> [CarMoves] --A(s) for this MDP
 validCarsToMove (lot1Cs, lot2Cs) = [negate lot2Cs .. lot1Cs]
 
+rentalReward = 10
 carMoveReward = negate 2
 
 lambda1_rentals = 3 --how many rentals expected at location 1 per day (poisson parameter)
@@ -31,7 +33,7 @@ lambda2_rentals = 4
 lambda1_returns = 3 --how many returns expected loc 1 (poisson param)
 lambda2_returns = 2
 
-poissonThreshold = 0.9999 --how high must the total probability mass be before poisson stops listing possibilities?
+poissonThreshold = 0.999 --how high must the total probability mass be before poisson stops listing possibilities?
 
 factorial :: Int -> Int
 factorial 0 = 1
@@ -84,12 +86,19 @@ rewardSalesResult :: MorningState
                     -> (Int, Probability) 
                     -> (Int, Probability) 
                     -> (Int, Probability) 
-                    -> (EodState, Reward, Probability) --not the true reward, that also depends on costs spent moving cars overnight
-rewardSalesResult (carsM1, carsM2) (rentals1, p1) (rentals2, p2) (returns1, pp1) (returns2, pp2) = undefined
+                    -> Maybe (EodState, Reward, Probability) --not the true reward, that also depends on costs spent moving cars overnight
+rewardSalesResult (carsM1, carsM2) (rentals1, p1) (rentals2, p2) (returns1, pp1) (returns2, pp2) =
+  if jointProb > 0.000001
+    then Just (es, totalRentals * rentalReward, jointProb)
+    else Nothing
+  where
+    es = (carsM1 + returns1 - rentals1, carsM2 + returns2 - rentals2)
+    totalRentals = fromIntegral $ rentals1 + rentals2
+    jointProb = p1 * p2 * pp1 * pp2
 
 --starting from the number of cars present in the morning, calculates dynamics for the sales and returns over the course of the day
 salesDynamics :: MorningState -> [(EodState, Reward, Probability)]
-salesDynamics ms@(carsM1, carsM2) = rewardSalesResult ms <$> rentalsL1 <*> rentalsL2 <*> returnsL1 <*> returnsL2
+salesDynamics ms@(carsM1, carsM2) = catMaybes $ rewardSalesResult ms <$> rentalsL1 <*> rentalsL2 <*> returnsL1 <*> returnsL2
   where
     rentalsL1 = capRentals carsM1 $ poisson lambda1_rentals
     rentalsL2 = capRentals carsM2 $ poisson lambda2_rentals
