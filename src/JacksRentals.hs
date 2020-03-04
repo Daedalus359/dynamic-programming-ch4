@@ -3,14 +3,24 @@ module JacksRentals where
 import MDP
 
 import Data.List (unfoldr)
+import qualified Data.Set as Set
 
 {-
 Exercise 4.7 and Example 4.2 from Reinforcement Learning: an Introduction, 2 ed, by Sutton and Barto
 -}
 
+jacksMDP :: MDP EodState CarMoves
+jacksMDP = MDP eodStates businessDynamics validCarsToMove
+
 type EodState = (Int, Int) --how many cars are in locations 1 and 2, respectively, at the end of the day?
 
+eodStates :: Set.Set EodState
+eodStates = Set.fromList $ (,) <$> [0 .. 20] <*> [0 .. 20]
+
 type CarMoves = Int --how many cars to move overnight from location 1 to location 2 (negative for other direction)
+
+validCarsToMove :: EodState -> [CarMoves] --A(s) for this MDP
+validCarsToMove (lot1Cs, lot2Cs) = [negate lot2Cs .. lot1Cs]
 
 carMoveReward = negate 2
 
@@ -47,3 +57,4 @@ businessDynamics :: Dynamics EodState CarMoves --EodState -> CarMoves -> [(EodSt
 businessDynamics eodState carsMoved = undefined
   where
     transportCost = abs carsMoved * carMoveReward --immediate reward (value is negative) of moving cars overnight
+    morningState = undefined
