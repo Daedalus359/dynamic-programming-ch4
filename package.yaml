@@ -28,7 +28,7 @@ library:
   - containers
 
 executables:
-  dynamic-progrmamming-ch4-exe:
+  jacks-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -37,6 +37,7 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - dynamic-progrmamming-ch4
+    - containers
 
 tests:
   dynamic-progrmamming-ch4-test:

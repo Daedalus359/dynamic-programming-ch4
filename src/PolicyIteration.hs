@@ -14,14 +14,14 @@ type DiscountFactor = Double
 type Value = Double
 type ValTable s = s -> Value
 
-initZeros :: (Ord s) => StateSpace s -> ValTable s
-initZeros states = (\s -> fromMaybe vtError $ Map.lookup s $ Map.fromSet (const 0.0) states)
+initZeros :: (Ord s, Show s) => StateSpace s -> ValTable s
+initZeros states = (\s -> fromMaybe (vtError $ "initZeros, state was: " ++ (show s) ) $ Map.lookup s $ Map.fromSet (const 0.0) states)
 
 vtFromMap :: (Ord s) => Map.Map s Value -> ValTable s
-vtFromMap map = (\s -> fromMaybe vtError $ Map.lookup s map)
+vtFromMap map = (\s -> fromMaybe (vtError "vtFromMap") $ Map.lookup s map)
 
-vtError :: Value
-vtError = error "lookup in value table failed"
+vtError :: String -> Value
+vtError str = error $ "lookup in value table failed during function: " ++ str
 
 type Policy s a = s -> a
 --for this problem, assume deterministic policies only
@@ -39,8 +39,6 @@ polFromMap :: (Ord s) => Map.Map s a -> Policy s a
 polFromMap map = (\s -> fromMaybe polError $ Map.lookup s map)
 
 polError = error "lookup in policy map failed"
-
-type PolValueUpdate s a = Dynamics s a -> DiscountFactor -> Policy s a -> ValTable s -> s -> Value--for use in step 2 of policy iteration
 
 q_pi :: Dynamics s a -> DiscountFactor -> ValTable s -> s -> a -> Value --computes q_pi(s, a) assuming valTable gives v_pi(s)
 q_pi dynamics gamma vt state action = getSum $ foldMap f $ dynamics state $ action

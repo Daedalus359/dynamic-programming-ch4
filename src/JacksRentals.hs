@@ -11,27 +11,7 @@ import qualified Data.Set as Set
 Exercise 4.7 and Example 4.2 from Reinforcement Learning: an Introduction, 2 ed, by Sutton and Barto
 -}
 
-jacksMDP :: MDP EodState CarMoves
-jacksMDP = MDP eodStates businessDynamics validCarsToMove
-
-jacksTask = MDPTask jacksMDP 0.9
-
-jacksFinalPolicy = policyImprovement 0.001 jacksTask jacksPolInit jacksVTInit
-
-jacksVTInit = initZeros eodStates
-jacksPolInit = initPolicy jacksMDP --does not initialize policy to always choose 0 as specified in problem, end result should be the same though
-
-type EodState = (Int, Int) --how many cars are in locations 1 and 2, respectively, at the end of the day?
---luckily, (Int, Int) already has an instance of Ord
-
-eodStates :: Set.Set EodState
-eodStates = Set.fromList $ (,) <$> [0 .. 20] <*> [0 .. 20]
-
-type CarMoves = Int --how many cars to move overnight from location 1 to location 2 (negative for other direction)
-
-validCarsToMove :: EodState -> [CarMoves] --A(s) for this MDP
-validCarsToMove (lot1Cs, lot2Cs) = [negate lot2Cs .. lot1Cs]
-
+--PARAMETERS
 rentalReward = 10
 carMoveReward = negate 2
 
@@ -41,7 +21,34 @@ lambda2_rentals = 4
 lambda1_returns = 3 --how many returns expected loc 1 (poisson param)
 lambda2_returns = 2
 
-poissonThreshold = 0.999 --how high must the total probability mass be before poisson stops listing possibilities?
+jacksGamma = 0.9
+
+maxCarsLot = 20 --how many cars may be in the lot at any time?
+
+vtThreshold = 0.001 --affects accuracy vs runtime of value iteration
+jpThreshold = 0.0001--how high must the probability of an event be for the dynamics function to include it as a possbility
+poissonThreshold = 0.99 --how high must the total probability mass be before poisson stops listing possibilities?
+
+jacksMDP :: MDP EodState CarMoves
+jacksMDP = MDP eodStates businessDynamics validCarsToMove
+
+jacksTask = MDPTask jacksMDP jacksGamma
+
+(jacksFinalVT, jacksFinalPolicy) = policyImprovement vtThreshold jacksTask jacksPolInit jacksVTInit
+
+jacksVTInit = initZeros eodStates
+jacksPolInit = initPolicy jacksMDP --does not initialize policy to always choose 0 as specified in problem, end result should be the same though
+
+type EodState = (Int, Int) --how many cars are in locations 1 and 2, respectively, at the end of the day?
+--luckily, (Int, Int) already has an instance of Ord
+
+eodStates :: Set.Set EodState
+eodStates = Set.fromList $ (,) <$> [0 .. maxCarsLot] <*> [0 .. maxCarsLot]
+
+type CarMoves = Int --how many cars to move overnight from location 1 to location 2 (negative for other direction)
+
+validCarsToMove :: EodState -> [CarMoves] --A(s) for this MDP
+validCarsToMove (lot1Cs, lot2Cs) = [negate lot2Cs .. lot1Cs]
 
 factorial :: Int -> Int
 factorial 0 = 1
@@ -96,11 +103,11 @@ rewardSalesResult :: MorningState
                     -> (Int, Probability) 
                     -> Maybe (EodState, Reward, Probability) --not the true reward, that also depends on costs spent moving cars overnight
 rewardSalesResult (carsM1, carsM2) (rentals1, p1) (rentals2, p2) (returns1, pp1) (returns2, pp2) =
-  if jointProb > 0.000001
+  if jointProb > jpThreshold
     then Just (es, totalRentals * rentalReward, jointProb)
     else Nothing
   where
-    es = (carsM1 + returns1 - rentals1, carsM2 + returns2 - rentals2)
+    es = (min maxCarsLot $ carsM1 + returns1 - rentals1, min maxCarsLot $ carsM2 + returns2 - rentals2)
     totalRentals = fromIntegral $ rentals1 + rentals2
     jointProb = p1 * p2 * pp1 * pp2
 
