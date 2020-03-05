@@ -51,7 +51,7 @@ q_pi dynamics gamma vt state action = getSum $ foldMap f $ dynamics state $ acti
 policyEvaluation :: (Hashable s, Eq s) => Double -> MDPTask s a -> Policy s a -> ValTable s -> ValTable s --returns the values under pi
 policyEvaluation threshold (MDPTask (MDP states dynamics af) gamma) policy valTable = go valTable
   where
-    go vt = let (delta, newVT) = vtFromMap <$> (foldr (accumValues vt) (0, HMap.empty) states) in
+    go vt = let (delta, newVT) = seq vt $ vtFromMap <$> (foldr (accumValues vt) (0, HMap.empty) states) in
     --go vtMap = let (delta, newVTMap) = (foldr (accumValues vtMap) (0, Map.empty) states) in
       if (delta < threshold)
         then newVT

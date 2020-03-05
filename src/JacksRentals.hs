@@ -24,7 +24,7 @@ lambda2_returns = 2
 
 jacksGamma = 0.9
 
-maxCarsLot = 6 --how many cars may be in the lot at any time?
+maxCarsLot = 9 --how many cars may be in the lot at any time?
 
 vtThreshold = 0.001 --affects accuracy vs runtime of value iteration
 jpThreshold = (1 - poissonThreshold) ** 2 --0.0001--how high must the probability of an event be for the dynamics function to include it as a possbility
