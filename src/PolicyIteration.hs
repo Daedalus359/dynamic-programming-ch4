@@ -49,9 +49,12 @@ policyEvaluation :: (Ord s) => Double -> MDPTask s a -> Policy s a -> ValTable s
 policyEvaluation threshold (MDPTask (MDP states dynamics af) gamma) policy valTable = go valTable
   where
     go vt = let (delta, newVT) = vtFromMap <$> (foldr (accumValues vt) (0, Map.empty) states) in
+    --go vtMap = let (delta, newVTMap) = (foldr (accumValues vtMap) (0, Map.empty) states) in
       if (delta < threshold)
         then newVT
+        --then vtFromMap newVTMap
         else go newVT
+        --else go newVTMap
 
     --for simplicity, this only ever uses the old value table when calculating new values, although better estimates could exist inside newVT (fix later)
     accumValues vt state (delta, newVT) = (newDelta, newMap)
