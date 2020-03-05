@@ -3,6 +3,7 @@ module PolicyIteration where
 import MDP --(MDP, StateSpace, Reward, Probability, Dynamics)
 import OptTools (argMax, priorityOrFirst)
 
+import Control.DeepSeq
 import Data.Hashable
 import qualified Data.HashMap.Strict as HMap
 import qualified Data.Map.Strict as Map
@@ -57,25 +58,15 @@ policyEvaluation threshold (MDPTask (MDP states dynamics af) gamma) policy valTa
         else go newVT
       where
         newVT = vtFromMap refilledMap
-        --(delta, refilledMap) = seq vt $ (foldr (accumValues vt) (0, HMap.empty) states)
         (delta, refilledMap) = foldr accumValues (0, HMap.empty) states
 
+        --for simplicity, this only ever uses the old value table when calculating new values, although better estimates could exist inside newVT (fix later)
         accumValues state (delta, newVT) = (newDelta, newMap)
           where
-            newVal = q_pi dynamics gamma vt state $ policy state
+            newVal = deepseq vt $ q_pi dynamics gamma vt state $ policy state
             oldVal = vt state
             newDelta = max delta $ abs $ newVal - oldVal
             newMap = HMap.insert state newVal newVT
-
-{-
-    --for simplicity, this only ever uses the old value table when calculating new values, although better estimates could exist inside newVT (fix later)
-    accumValues vt state (delta, newVT) = (newDelta, newMap)
-      where
-        newVal = q_pi dynamics gamma vt state $ policy state
-        oldVal = vt state
-        newDelta = max delta $ abs $ newVal - oldVal
-        newMap = HMap.insert state newVal newVT
--}
 
 policyImprovement :: (Hashable s, Eq s, Eq a) => Double -> MDPTask s a -> Policy s a -> ValTable s -> (ValTable s, Policy s a)
 policyImprovement threshold tsk@(MDPTask (MDP states dynamics af) gamma) policy valTable = go policy valTable
