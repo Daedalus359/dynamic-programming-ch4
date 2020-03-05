@@ -26,6 +26,8 @@ library:
   source-dirs: src
   dependencies:
   - containers
+  - unordered-containers
+  - hashable
 
 executables:
   jacks-exe:

@@ -3,9 +3,12 @@ module PolicyIteration where
 import MDP --(MDP, StateSpace, Reward, Probability, Dynamics)
 import OptTools (argMax, priorityOrFirst)
 
+import Data.Hashable
+import qualified Data.HashMap.Strict as HMap
 import qualified Data.Map.Strict as Map
 import Data.Maybe
 import Data.Monoid
+import qualified Data.Set as Set
 
 --combine MDP with a discount factor to create an optimization problem with infinite discounted reward
 data MDPTask s a = MDPTask (MDP s a) DiscountFactor
@@ -14,11 +17,11 @@ type DiscountFactor = Double
 type Value = Double
 type ValTable s = s -> Value
 
-initZeros :: (Ord s, Show s) => StateSpace s -> ValTable s
-initZeros states = (\s -> fromMaybe (vtError $ "initZeros, state was: " ++ (show s) ) $ Map.lookup s $ Map.fromSet (const 0.0) states)
+initZeros :: (Hashable s, Eq s, Show s) => StateSpace s -> ValTable s
+initZeros states = (\s -> fromMaybe (vtError $ "initZeros, state was: " ++ (show s) ) $ HMap.lookup s $ HMap.fromList $ fmap (\s -> (s, 0.0)) $ Set.toList states)
 
-vtFromMap :: (Ord s) => Map.Map s Value -> ValTable s
-vtFromMap map = (\s -> fromMaybe (vtError "vtFromMap") $ Map.lookup s map)
+vtFromMap :: (Hashable s, Eq s) => HMap.HashMap s Value -> ValTable s
+vtFromMap map = (\s -> fromMaybe (vtError "vtFromMap") $ HMap.lookup s map)
 
 vtError :: String -> Value
 vtError str = error $ "lookup in value table failed during function: " ++ str
@@ -28,15 +31,15 @@ type Policy s a = s -> a
 --implementations of policy can use Data.Map and fromMaybe with error
 
 --this might ge better in the application specific code
-initPolicy :: (Ord s) => MDP s a -> Policy s a
-initPolicy (MDP states _ af) = (\s -> fromMaybe polError $ Map.lookup s $ Map.fromSet firstChoice states)
+initPolicy :: (Hashable s, Eq s) => MDP s a -> Policy s a
+initPolicy (MDP states _ af) = (\s -> fromMaybe polError $ HMap.lookup s $ HMap.fromList $ fmap (\s -> (s, firstChoice s)) $ Set.toList states)
   where
     firstChoice s = case (af s) of
       [] -> error "action function returns no options"
       (a:as) -> a
 
-polFromMap :: (Ord s) => Map.Map s a -> Policy s a
-polFromMap map = (\s -> fromMaybe polError $ Map.lookup s map)
+polFromMap :: (Hashable s, Eq s) => HMap.HashMap s a -> Policy s a
+polFromMap map = (\s -> fromMaybe polError $ HMap.lookup s map)
 
 polError = error "lookup in policy map failed"
 
@@ -45,10 +48,10 @@ q_pi dynamics gamma vt state action = getSum $ foldMap f $ dynamics state $ acti
   where
     f (s, r, p) = Sum $ (* p) $ (+ r) $ (* gamma) $ vt s
 
-policyEvaluation :: (Ord s) => Double -> MDPTask s a -> Policy s a -> ValTable s -> ValTable s --returns the values under pi
+policyEvaluation :: (Hashable s, Eq s) => Double -> MDPTask s a -> Policy s a -> ValTable s -> ValTable s --returns the values under pi
 policyEvaluation threshold (MDPTask (MDP states dynamics af) gamma) policy valTable = go valTable
   where
-    go vt = let (delta, newVT) = vtFromMap <$> (foldr (accumValues vt) (0, Map.empty) states) in
+    go vt = let (delta, newVT) = vtFromMap <$> (foldr (accumValues vt) (0, HMap.empty) states) in
     --go vtMap = let (delta, newVTMap) = (foldr (accumValues vtMap) (0, Map.empty) states) in
       if (delta < threshold)
         then newVT
@@ -62,12 +65,12 @@ policyEvaluation threshold (MDPTask (MDP states dynamics af) gamma) policy valTa
         newVal = q_pi dynamics gamma vt state $ policy state
         oldVal = vt state
         newDelta = max delta $ abs $ newVal - oldVal
-        newMap = Map.insert state newVal newVT
+        newMap = HMap.insert state newVal newVT
 
-policyImprovement :: (Ord s, Eq a) => Double -> MDPTask s a -> Policy s a -> ValTable s -> (ValTable s, Policy s a)
+policyImprovement :: (Hashable s, Eq s, Eq a) => Double -> MDPTask s a -> Policy s a -> ValTable s -> (ValTable s, Policy s a)
 policyImprovement threshold tsk@(MDPTask (MDP states dynamics af) gamma) policy valTable = go policy valTable
   where
-    go pol vt = let evt = (evaluatedVT pol vt) in let (stable, newPol) = polFromMap <$> (foldr (accumActions evt pol) (True, Map.empty) states) in
+    go pol vt = let evt = (evaluatedVT pol vt) in let (stable, newPol) = polFromMap <$> (foldr (accumActions evt pol) (True, HMap.empty) states) in
       if stable
         then (evt, newPol)
         else go newPol evt
@@ -77,7 +80,7 @@ policyImprovement threshold tsk@(MDPTask (MDP states dynamics af) gamma) policy 
     accumActions evt pol state (stableOld, polMapSoFar) = (stableNew, newPolMap)
       where
         oldAction = pol state
-        newPolMap = Map.insert state newAction polMapSoFar--need to make sure tie-breaking favors old policy if applicable
+        newPolMap = HMap.insert state newAction polMapSoFar--need to make sure tie-breaking favors old policy if applicable
         newAction = fromMaybe (error "argMax returned Nothing") $ argMax (priorityOrFirst oldAction) qp $ af state
         stableNew = stableOld && (oldAction == newAction)
         qp = q_pi dynamics gamma evt state

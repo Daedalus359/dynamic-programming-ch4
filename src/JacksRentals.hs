@@ -6,6 +6,7 @@ import PolicyIteration
 import Data.List (unfoldr)
 import Data.Maybe (catMaybes)
 import qualified Data.Set as Set
+import qualified Data.HashMap.Strict as HMap
 
 {-
 Exercise 4.7 and Example 4.2 from Reinforcement Learning: an Introduction, 2 ed, by Sutton and Barto
@@ -23,11 +24,11 @@ lambda2_returns = 2
 
 jacksGamma = 0.9
 
-maxCarsLot = 20 --how many cars may be in the lot at any time?
+maxCarsLot = 12 --how many cars may be in the lot at any time?
 
 vtThreshold = 0.001 --affects accuracy vs runtime of value iteration
 jpThreshold = 0.0001--how high must the probability of an event be for the dynamics function to include it as a possbility
-poissonThreshold = 0.99 --how high must the total probability mass be before poisson stops listing possibilities?
+poissonThreshold = 0.999 --how high must the total probability mass be before poisson stops listing possibilities?
 
 jacksMDP :: MDP EodState CarMoves
 jacksMDP = MDP eodStates businessDynamics validCarsToMove
@@ -37,7 +38,8 @@ jacksTask = MDPTask jacksMDP jacksGamma
 (jacksFinalVT, jacksFinalPolicy) = policyImprovement vtThreshold jacksTask jacksPolInit jacksVTInit
 
 jacksVTInit = initZeros eodStates
-jacksPolInit = initPolicy jacksMDP --does not initialize policy to always choose 0 as specified in problem, end result should be the same though
+jacksPolInit = polFromMap $ HMap.fromList $ fmap (\s -> (s, 0)) $ Set.toList eodStates
+--jacksPolInit = initPolicy jacksMDP --does not initialize policy to always choose 0 as specified in problem, end result should be the same though
 
 type EodState = (Int, Int) --how many cars are in locations 1 and 2, respectively, at the end of the day?
 --luckily, (Int, Int) already has an instance of Ord
@@ -88,11 +90,15 @@ type MorningState = (Int, Int)
 
 overnightMove :: EodState -> CarMoves -> MorningState
 overnightMove (l1c, l2c) carsTo2
-  --4 cases involve cars returning to national company or impossible actions
-  | l1c > 20 = overnightMove (20, l2c) carsTo2
-  | l2c > 20 = overnightMove (l1c, 20) carsTo2
+  --cars return to national company before move occurs
+  | l1c > maxCarsLot = overnightMove (maxCarsLot, l2c) carsTo2
+  | l2c > maxCarsLot = overnightMove (l1c, maxCarsLot) carsTo2
+  --impossible actions
   | carsTo2 > l1c = overnightMove (l1c, l2c) l1c
   | (negate carsTo2) > l2c = overnightMove (l1c, l2c) (negate l2c)
+  --cars return to national company after move occurs
+  | l2c + carsTo2 > maxCarsLot = overnightMove (l1c, l2c) (maxCarsLot - l2c)
+  | l1c + (negate carsTo2) > maxCarsLot = overnightMove (l1c, l2c) (negate $ maxCarsLot - l1c)
   --1 normal case, catches the transformed forms of all errors
   | otherwise = (l1c - carsTo2, l2c + carsTo2)
 
