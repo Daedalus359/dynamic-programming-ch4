@@ -1,25 +1,27 @@
-	Thu Mar  5 11:53 2020 Time and Allocation Profiling Report  (Final)
+	Thu Mar  5 13:30 2020 Time and Allocation Profiling Report  (Final)
 
 	   jacks-exe +RTS -N -p -RTS
 
-	total time  =       14.59 secs   (45449 ticks @ 1000 us, 16 processors)
-	total alloc = 73,079,457,184 bytes  (excludes profiling overheads)
+	total time  =       20.37 secs   (63468 ticks @ 1000 us, 16 processors)
+	total alloc = 87,447,500,232 bytes  (excludes profiling overheads)
 
 COST CENTRE                    MODULE              SRC                                    %time %alloc
 
-salesDynamics                  JacksRentals        src/JacksRentals.hs:(122,1)-(128,39)    25.0   49.4
-lookup#                        Data.HashMap.Base   Data/HashMap/Base.hs:509:1-80           24.0    6.9
-rewardSalesResult              JacksRentals        src/JacksRentals.hs:(111,1)-(118,35)    20.0   22.9
-rewardSalesResult.es           JacksRentals        src/JacksRentals.hs:116:5-103            4.8    2.3
-hash                           Data.Hashable.Class Data/Hashable/Class.hs:522:5-45          4.8    2.0
-businessDynamics               JacksRentals        src/JacksRentals.hs:(84,1)-(87,51)       4.0   12.4
-defaultHashWithSalt            Data.Hashable.Class Data/Hashable/Class.hs:290:1-50          3.4    0.0
-q_pi                           PolicyIteration     src/PolicyIteration.hs:(47,1)-(49,56)    2.9    0.0
-hash                           Data.HashMap.Base   Data/HashMap/Base.hs:166:1-28            2.2    0.0
-businessDynamics.\             JacksRentals        src/JacksRentals.hs:84:59-85             1.5    1.3
-policyEvaluation.go.newVT      PolicyIteration     src/PolicyIteration.hs:54:17-94          1.3    0.0
-rewardSalesResult.totalRentals JacksRentals        src/JacksRentals.hs:117:5-53             1.1    1.3
-combine                        Data.Hashable.Class Data/Hashable/Class.hs:780:1-40          0.6    1.3
+lookup#                        Data.HashMap.Base   Data/HashMap/Base.hs:509:1-80           32.3   10.1
+rewardSalesResult              JacksRentals        src/JacksRentals.hs:(113,1)-(120,35)    14.6   35.9
+salesDynamics                  JacksRentals        src/JacksRentals.hs:(124,1)-(130,39)    10.9   22.8
+rewardSalesResult.es           JacksRentals        src/JacksRentals.hs:118:5-103            6.9    2.2
+hash                           Data.Hashable.Class Data/Hashable/Class.hs:522:5-45          6.7    3.1
+businessDynamics               JacksRentals        src/JacksRentals.hs:(86,1)-(89,51)       5.5   19.5
+defaultHashWithSalt            Data.Hashable.Class Data/Hashable/Class.hs:290:1-50          5.1    0.0
+q_pi                           PolicyIteration     src/PolicyIteration.hs:(47,1)-(49,56)    3.8    0.0
+hash                           Data.HashMap.Base   Data/HashMap/Base.hs:166:1-28            3.0    0.0
+businessDynamics.\             JacksRentals        src/JacksRentals.hs:86:59-85             1.9    2.1
+policyEvaluation.go.newVT      PolicyIteration     src/PolicyIteration.hs:54:17-94          1.7    0.0
+rewardSalesResult.totalRentals JacksRentals        src/JacksRentals.hs:119:5-53             1.6    2.1
+vtFromMap.\                    PolicyIteration     src/PolicyIteration.hs:24:24-74          1.2    0.0
+combine                        Data.Hashable.Class Data/Hashable/Class.hs:780:1-40          1.0    2.1
+vtFromMap                      PolicyIteration     src/PolicyIteration.hs:24:1-75           1.0    0.0
 
 
                                                                                                                                       individual      inherited
@@ -42,39 +44,39 @@ MAIN                                             MAIN                     <built
  CAF:bitsPerSubkey                               Data.HashMap.Base        Data/HashMap/Base.hs:1858:1-13           590          0    0.0    0.0     0.0    0.0
   bitsPerSubkey                                  Data.HashMap.Base        Data/HashMap/Base.hs:1858:1-17           755          1    0.0    0.0     0.0    0.0
  CAF:businessDynamics1                           JacksRentals             <no location info>                       650          0    0.0    0.0     0.0    0.0
-  salesDynamics                                  JacksRentals             src/JacksRentals.hs:(122,1)-(128,39)     797          0    0.0    0.0     0.0    0.0
-   salesDynamics.rentalsL1                       JacksRentals             src/JacksRentals.hs:124:5-59             798          0    0.0    0.0     0.0    0.0
-    poisson                                      JacksRentals             src/JacksRentals.hs:(65,1)-(70,42)       799          1    0.0    0.0     0.0    0.0
-     poisson.f                                   JacksRentals             src/JacksRentals.hs:(67,5)-(70,42)       800         12    0.0    0.0     0.0    0.0
-      poisson.f.pMass                            JacksRentals             src/JacksRentals.hs:70:15-42             816         11    0.0    0.0     0.0    0.0
-       poissonMass                               JacksRentals             src/JacksRentals.hs:81:1-129             818         11    0.0    0.0     0.0    0.0
-        factorial                                JacksRentals             src/JacksRentals.hs:(56,1)-(59,51)       932         65    0.0    0.0     0.0    0.0
+  salesDynamics                                  JacksRentals             src/JacksRentals.hs:(124,1)-(130,39)     797          0    0.0    0.0     0.0    0.0
+   salesDynamics.rentalsL1                       JacksRentals             src/JacksRentals.hs:126:5-59             798          0    0.0    0.0     0.0    0.0
+    poisson                                      JacksRentals             src/JacksRentals.hs:(65,1)-(72,42)       799          1    0.0    0.0     0.0    0.0
+     poisson.f                                   JacksRentals             src/JacksRentals.hs:(67,5)-(72,42)       800         13    0.0    0.0     0.0    0.0
+      poisson.f.pMass                            JacksRentals             src/JacksRentals.hs:72:15-42             816         11    0.0    0.0     0.0    0.0
+       poissonMass                               JacksRentals             src/JacksRentals.hs:83:1-129             818         11    0.0    0.0     0.0    0.0
+        factorial                                JacksRentals             src/JacksRentals.hs:(56,1)-(59,51)       933         65    0.0    0.0     0.0    0.0
  CAF:businessDynamics2                           JacksRentals             <no location info>                       648          0    0.0    0.0     0.0    0.0
-  salesDynamics                                  JacksRentals             src/JacksRentals.hs:(122,1)-(128,39)     804          0    0.0    0.0     0.0    0.0
-   salesDynamics.rentalsL2                       JacksRentals             src/JacksRentals.hs:125:5-59             805          0    0.0    0.0     0.0    0.0
-    poisson                                      JacksRentals             src/JacksRentals.hs:(65,1)-(70,42)       806          1    0.0    0.0     0.0    0.0
-     poisson.f                                   JacksRentals             src/JacksRentals.hs:(67,5)-(70,42)       807         13    0.0    0.0     0.0    0.0
-      poisson.f.pMass                            JacksRentals             src/JacksRentals.hs:70:15-42             822         12    0.0    0.0     0.0    0.0
-       poissonMass                               JacksRentals             src/JacksRentals.hs:81:1-129             824         12    0.0    0.0     0.0    0.0
-        factorial                                JacksRentals             src/JacksRentals.hs:(56,1)-(59,51)       836         77    0.0    0.0     0.0    0.0
+  salesDynamics                                  JacksRentals             src/JacksRentals.hs:(124,1)-(130,39)     804          0    0.0    0.0     0.0    0.0
+   salesDynamics.rentalsL2                       JacksRentals             src/JacksRentals.hs:127:5-59             805          0    0.0    0.0     0.0    0.0
+    poisson                                      JacksRentals             src/JacksRentals.hs:(65,1)-(72,42)       806          1    0.0    0.0     0.0    0.0
+     poisson.f                                   JacksRentals             src/JacksRentals.hs:(67,5)-(72,42)       807         14    0.0    0.0     0.0    0.0
+      poisson.f.pMass                            JacksRentals             src/JacksRentals.hs:72:15-42             822         12    0.0    0.0     0.0    0.0
+       poissonMass                               JacksRentals             src/JacksRentals.hs:83:1-129             824         12    0.0    0.0     0.0    0.0
+        factorial                                JacksRentals             src/JacksRentals.hs:(56,1)-(59,51)       931         77    0.0    0.0     0.0    0.0
  CAF:businessDynamics_xs                         JacksRentals             <no location info>                       646          0    0.0    0.0     0.0    0.0
-  salesDynamics                                  JacksRentals             src/JacksRentals.hs:(122,1)-(128,39)     808          0    0.0    0.0     0.0    0.0
-   salesDynamics.returnsL1                       JacksRentals             src/JacksRentals.hs:127:5-39             809          1    0.0    0.0     0.0    0.0
-    poisson                                      JacksRentals             src/JacksRentals.hs:(65,1)-(70,42)       810          1    0.0    0.0     0.0    0.0
-     poisson.f                                   JacksRentals             src/JacksRentals.hs:(67,5)-(70,42)       811         12    0.0    0.0     0.0    0.0
-      poisson.f.pMass                            JacksRentals             src/JacksRentals.hs:70:15-42             825         11    0.0    0.0     0.0    0.0
-       poissonMass                               JacksRentals             src/JacksRentals.hs:81:1-129             827         11    0.0    0.0     0.0    0.0
-        factorial                                JacksRentals             src/JacksRentals.hs:(56,1)-(59,51)       835         65    0.0    0.0     0.0    0.0
+  salesDynamics                                  JacksRentals             src/JacksRentals.hs:(124,1)-(130,39)     808          0    0.0    0.0     0.0    0.0
+   salesDynamics.returnsL1                       JacksRentals             src/JacksRentals.hs:129:5-39             809          1    0.0    0.0     0.0    0.0
+    poisson                                      JacksRentals             src/JacksRentals.hs:(65,1)-(72,42)       810          1    0.0    0.0     0.0    0.0
+     poisson.f                                   JacksRentals             src/JacksRentals.hs:(67,5)-(72,42)       811         13    0.0    0.0     0.0    0.0
+      poisson.f.pMass                            JacksRentals             src/JacksRentals.hs:72:15-42             825         11    0.0    0.0     0.0    0.0
+       poissonMass                               JacksRentals             src/JacksRentals.hs:83:1-129             827         11    0.0    0.0     0.0    0.0
+        factorial                                JacksRentals             src/JacksRentals.hs:(56,1)-(59,51)       930         65    0.0    0.0     0.0    0.0
  CAF:businessDynamics_xs1                        JacksRentals             <no location info>                       644          0    0.0    0.0     0.0    0.0
-  salesDynamics                                  JacksRentals             src/JacksRentals.hs:(122,1)-(128,39)     812          0    0.0    0.0     0.0    0.0
-   salesDynamics.returnsL2                       JacksRentals             src/JacksRentals.hs:128:5-39             813          1    0.0    0.0     0.0    0.0
-    poisson                                      JacksRentals             src/JacksRentals.hs:(65,1)-(70,42)       814          1    0.0    0.0     0.0    0.0
-     poisson.f                                   JacksRentals             src/JacksRentals.hs:(67,5)-(70,42)       815         10    0.0    0.0     0.0    0.0
-      poisson.f.pMass                            JacksRentals             src/JacksRentals.hs:70:15-42             828          9    0.0    0.0     0.0    0.0
-       poissonMass                               JacksRentals             src/JacksRentals.hs:81:1-129             830          9    0.0    0.0     0.0    0.0
-        factorial                                JacksRentals             src/JacksRentals.hs:(56,1)-(59,51)       834         44    0.0    0.0     0.0    0.0
- CAF:carMoveReward                               JacksRentals             src/JacksRentals.hs:17:1-13              629          0    0.0    0.0     0.0    0.0
-  carMoveReward                                  JacksRentals             src/JacksRentals.hs:17:1-24              931          1    0.0    0.0     0.0    0.0
+  salesDynamics                                  JacksRentals             src/JacksRentals.hs:(124,1)-(130,39)     812          0    0.0    0.0     0.0    0.0
+   salesDynamics.returnsL2                       JacksRentals             src/JacksRentals.hs:130:5-39             813          1    0.0    0.0     0.0    0.0
+    poisson                                      JacksRentals             src/JacksRentals.hs:(65,1)-(72,42)       814          1    0.0    0.0     0.0    0.0
+     poisson.f                                   JacksRentals             src/JacksRentals.hs:(67,5)-(72,42)       815         11    0.0    0.0     0.0    0.0
+      poisson.f.pMass                            JacksRentals             src/JacksRentals.hs:72:15-42             828          9    0.0    0.0     0.0    0.0
+       poissonMass                               JacksRentals             src/JacksRentals.hs:83:1-129             830          9    0.0    0.0     0.0    0.0
+        factorial                                JacksRentals             src/JacksRentals.hs:(56,1)-(59,51)       929         44    0.0    0.0     0.0    0.0
+ CAF:carMoveReward                               JacksRentals             src/JacksRentals.hs:17:1-13              633          0    0.0    0.0     0.0    0.0
+  carMoveReward                                  JacksRentals             src/JacksRentals.hs:17:1-24              928          1    0.0    0.0     0.0    0.0
  CAF:copyArray#                                  Data.HashMap.Array       Data/HashMap/Array.hs:128:1-10           602          0    0.0    0.0     0.0    0.0
   copyArray#                                     Data.HashMap.Array       Data/HashMap/Array.hs:128:1-28           770          1    0.0    0.0     0.0    0.0
  CAF:empty                                       Data.HashMap.Base        Data/HashMap/Base.hs:464:1-5             586          0    0.0    0.0     0.0    0.0
@@ -93,292 +95,292 @@ MAIN                                             MAIN                     <built
   (...)                                          JacksRentals             src/JacksRentals.hs:38:1-99              717          1    0.0    0.0    99.8  100.0
    policyImprovement                             PolicyIteration          src/PolicyIteration.hs:(71,1)-(86,42)    720          1    0.0    0.0    99.8  100.0
     policyImprovement.go                         PolicyIteration          src/PolicyIteration.hs:(73,5)-(76,26)    721          4    0.0    0.0    99.8  100.0
-     policyImprovement.go.(...)                  PolicyIteration          src/PolicyIteration.hs:73:55-144         723          4    0.0    0.0    25.1   25.4
-      policyImprovement.accumActions             PolicyIteration          src/PolicyIteration.hs:(80,5)-(86,42)    724        784    0.0    0.0    25.1   25.4
-       policyImprovement.accumActions.newAction  PolicyIteration          src/PolicyIteration.hs:84:9-114          778        784    0.0    0.0    25.1   25.4
-        argMax                                   OptTools                 src/OptTools.hs:(4,1)-(12,109)           779        784    0.0    0.0    25.1   25.4
-         argMax.compareAndReplace                OptTools                 src/OptTools.hs:(6,5)-(12,109)           783      10976    0.0    0.0    25.1   25.4
-          argMax.compareAndReplace.newVal        OptTools                 src/OptTools.hs:7:68-79                  785      10192    0.0    0.0    23.9   24.2
-           policyImprovement.accumActions.qp     PolicyIteration          src/PolicyIteration.hs:86:9-42           787          0    0.0    0.0    23.9   24.2
-            q_pi                                 PolicyIteration          src/PolicyIteration.hs:(47,1)-(49,56)    788      10192    0.7    0.0    23.9   24.2
-             q_pi.f                              PolicyIteration          src/PolicyIteration.hs:49:5-56           837   13885196    0.1    0.0     9.2    2.4
-              policyImprovement.go.evt           PolicyIteration          src/PolicyIteration.hs:73:21-46          994          0    0.0    0.0     9.0    2.4
-               policyImprovement.evaluatedVT     PolicyIteration          src/PolicyIteration.hs:78:5-48           995          0    0.0    0.0     9.0    2.4
-                policyEvaluation                 PolicyIteration          src/PolicyIteration.hs:(52,1)-(68,47)    996          0    0.0    0.0     9.0    2.4
-                 policyEvaluation.go             PolicyIteration          src/PolicyIteration.hs:(54,5)-(59,21)    997          0    0.0    0.0     9.0    2.4
-                  policyEvaluation.go.(...)      PolicyIteration          src/PolicyIteration.hs:54:17-94          999          0    0.1    0.0     8.8    2.4
-                   vtFromMap                     PolicyIteration          src/PolicyIteration.hs:24:1-75          1000          0    0.1    0.0     8.7    2.4
-                    vtFromMap.\                  PolicyIteration          src/PolicyIteration.hs:24:24-74         1001   13885196    0.2    0.0     8.6    2.4
-                     lookup#                     Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1002   13885196    5.6    1.6     8.4    2.4
-                      unArray                    Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1009   36441648    0.0    0.0     0.0    0.0
-                      sparseIndex                Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1010   22556452    0.2    0.0     0.2    0.0
-                      hash                       Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1003   13885196    0.5    0.0     2.7    0.8
-                       hash                      Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1004   13885196    1.1    0.5     2.2    0.8
-                        hashWithSalt             Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1006          0    0.1    0.0     1.1    0.3
-                         defaultHashWithSalt     Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1007   13885196    0.8    0.0     0.9    0.3
-                          combine                Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1008   13885196    0.1    0.3     0.1    0.3
-                      lookup#.\                  Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1011   13885196    0.0    0.0     0.0    0.0
+     policyImprovement.go.(...)                  PolicyIteration          src/PolicyIteration.hs:73:55-144         723          4    0.0    0.0    16.5   16.4
+      policyImprovement.accumActions             PolicyIteration          src/PolicyIteration.hs:(80,5)-(86,42)    724        400    0.0    0.0    16.5   16.4
+       policyImprovement.accumActions.newAction  PolicyIteration          src/PolicyIteration.hs:84:9-114          778        400    0.0    0.0    16.5   16.4
+        argMax                                   OptTools                 src/OptTools.hs:(4,1)-(12,109)           779        400    0.0    0.0    16.5   16.4
+         argMax.compareAndReplace                OptTools                 src/OptTools.hs:(6,5)-(12,109)           783       4000    0.0    0.0    16.5   16.4
+          argMax.compareAndReplace.newVal        OptTools                 src/OptTools.hs:7:68-79                  785       3600    0.0    0.0    15.5   15.3
+           policyImprovement.accumActions.qp     PolicyIteration          src/PolicyIteration.hs:86:9-42           787          0    0.0    0.0    15.4   15.3
+            q_pi                                 PolicyIteration          src/PolicyIteration.hs:(47,1)-(49,56)    788       3600    0.6    0.0    15.4   15.3
+             q_pi.f                              PolicyIteration          src/PolicyIteration.hs:49:5-56           834   17239680    0.1    0.0     8.4    2.4
+              policyImprovement.go.evt           PolicyIteration          src/PolicyIteration.hs:73:21-46          994          0    0.0    0.0     8.3    2.4
+               policyImprovement.evaluatedVT     PolicyIteration          src/PolicyIteration.hs:78:5-48           995          0    0.0    0.0     8.3    2.4
+                policyEvaluation                 PolicyIteration          src/PolicyIteration.hs:(52,1)-(68,47)    996          0    0.0    0.0     8.3    2.4
+                 policyEvaluation.go             PolicyIteration          src/PolicyIteration.hs:(54,5)-(59,21)    997          0    0.0    0.0     8.3    2.4
+                  policyEvaluation.go.(...)      PolicyIteration          src/PolicyIteration.hs:54:17-94          999          0    0.1    0.0     8.1    2.4
+                   vtFromMap                     PolicyIteration          src/PolicyIteration.hs:24:1-75          1000          0    0.2    0.0     8.0    2.4
+                    vtFromMap.\                  PolicyIteration          src/PolicyIteration.hs:24:24-74         1001   17239680    0.1    0.0     7.8    2.4
+                     lookup#                     Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1002   17239680    5.1    1.6     7.7    2.4
+                      unArray                    Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1009   42792076    0.0    0.0     0.0    0.0
+                      sparseIndex                Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1010   25552396    0.1    0.0     0.1    0.0
+                      hash                       Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1003   17239680    0.4    0.0     2.4    0.8
+                       hash                      Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1004   17239680    1.0    0.5     2.0    0.8
+                        hashWithSalt             Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1006          0    0.1    0.0     1.0    0.3
+                         defaultHashWithSalt     Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1007   17239680    0.8    0.0     0.9    0.3
+                          combine                Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1008   17239680    0.1    0.3     0.1    0.3
+                      lookup#.\                  Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1011   17239680    0.0    0.0     0.0    0.0
                   policyEvaluation.go.newVT      PolicyIteration          src/PolicyIteration.hs:54:17-94          998          0    0.2    0.0     0.2    0.0
-             jacksMDP                            JacksRentals             src/JacksRentals.hs:34:1-57              790          0    0.0    0.0    14.1   21.8
-              businessDynamics                   JacksRentals             src/JacksRentals.hs:(84,1)-(87,51)       791      10192    1.0    2.9    14.1   21.8
-               businessDynamics.\                JacksRentals             src/JacksRentals.hs:84:59-85             838   13885196    0.3    0.3     0.3    0.3
-               businessDynamics.morningState     JacksRentals             src/JacksRentals.hs:87:5-51              792      10192    0.0    0.0     0.0    0.0
-                overnightMove                    JacksRentals             src/JacksRentals.hs:(92,1)-(103,46)      793      13468    0.0    0.0     0.0    0.0
-               businessDynamics.transportReward  JacksRentals             src/JacksRentals.hs:86:5-66             1013      10192    0.0    0.0     0.0    0.0
-               salesDynamics                     JacksRentals             src/JacksRentals.hs:(122,1)-(128,39)     794      10192    6.4   12.5    12.7   18.6
-                rewardSalesResult                JacksRentals             src/JacksRentals.hs:(111,1)-(118,35)     831   64551168    4.9    5.3     6.3    6.1
-                 rewardSalesResult.jointProb     JacksRentals             src/JacksRentals.hs:118:5-35             832   64551168    0.0    0.0     0.0    0.0
-                 rewardSalesResult.es            JacksRentals             src/JacksRentals.hs:116:5-103           1005   13885196    1.1    0.5     1.1    0.5
-                 rewardSalesResult.totalRentals  JacksRentals             src/JacksRentals.hs:117:5-53            1012   13885196    0.2    0.3     0.2    0.3
-                salesDynamics.rentalsL1          JacksRentals             src/JacksRentals.hs:124:5-59             795      10192    0.0    0.0     0.0    0.0
-                 capRentals                      JacksRentals             src/JacksRentals.hs:(74,1)-(78,37)       796      87324    0.0    0.0     0.0    0.0
-                  capRentals.sumProb             JacksRentals             src/JacksRentals.hs:78:11-37            1050       6720    0.0    0.0     0.0    0.0
-                salesDynamics.rentalsL2          JacksRentals             src/JacksRentals.hs:125:5-59             802      10192    0.0    0.0     0.0    0.0
-                 capRentals                      JacksRentals             src/JacksRentals.hs:(74,1)-(78,37)       803      84032    0.0    0.0     0.0    0.0
-                  capRentals.sumProb             JacksRentals             src/JacksRentals.hs:78:11-37            1049       7808    0.0    0.0     0.0    0.0
-          argMax.compareAndReplace.valComp       OptTools                 src/OptTools.hs:7:88-122                 784      10192    0.0    0.0     0.0    0.0
-          policyImprovement.accumActions.qp      PolicyIteration          src/PolicyIteration.hs:86:9-42          1014          0    0.0    0.0     1.2    1.2
-           q_pi                                  PolicyIteration          src/PolicyIteration.hs:(47,1)-(49,56)   1015        780    0.0    0.0     1.2    1.2
-            q_pi.f                               PolicyIteration          src/PolicyIteration.hs:49:5-56          1027     727528    0.0    0.0     0.4    0.1
-             policyImprovement.go.evt            PolicyIteration          src/PolicyIteration.hs:73:21-46         1029          0    0.0    0.0     0.4    0.1
-              policyImprovement.evaluatedVT      PolicyIteration          src/PolicyIteration.hs:78:5-48          1030          0    0.0    0.0     0.4    0.1
-               policyEvaluation                  PolicyIteration          src/PolicyIteration.hs:(52,1)-(68,47)   1031          0    0.0    0.0     0.4    0.1
-                policyEvaluation.go              PolicyIteration          src/PolicyIteration.hs:(54,5)-(59,21)   1032          0    0.0    0.0     0.4    0.1
-                 policyEvaluation.go.(...)       PolicyIteration          src/PolicyIteration.hs:54:17-94         1034          0    0.0    0.0     0.4    0.1
-                  vtFromMap                      PolicyIteration          src/PolicyIteration.hs:24:1-75          1035          0    0.0    0.0     0.4    0.1
-                   vtFromMap.\                   PolicyIteration          src/PolicyIteration.hs:24:24-74         1036     727528    0.0    0.0     0.4    0.1
-                    lookup#                      Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1037     727528    0.3    0.1     0.4    0.1
-                     unArray                     Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1044    1903056    0.0    0.0     0.0    0.0
-                     sparseIndex                 Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1045    1175528    0.0    0.0     0.0    0.0
-                     hash                        Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1038     727528    0.0    0.0     0.1    0.0
-                      hash                       Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1039     727528    0.0    0.0     0.1    0.0
-                       hashWithSalt              Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1041          0    0.0    0.0     0.0    0.0
-                        defaultHashWithSalt      Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1042     727528    0.0    0.0     0.0    0.0
-                         combine                 Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1043     727528    0.0    0.0     0.0    0.0
-                     lookup#.\                   Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1046     727528    0.0    0.0     0.0    0.0
-                 policyEvaluation.go.newVT       PolicyIteration          src/PolicyIteration.hs:54:17-94         1033          0    0.0    0.0     0.0    0.0
-            jacksMDP                             JacksRentals             src/JacksRentals.hs:34:1-57             1016          0    0.0    0.0     0.7    1.1
-             businessDynamics                    JacksRentals             src/JacksRentals.hs:(84,1)-(87,51)      1017        780    0.0    0.2     0.7    1.1
-              businessDynamics.\                 JacksRentals             src/JacksRentals.hs:84:59-85            1028     727528    0.0    0.0     0.0    0.0
-              businessDynamics.morningState      JacksRentals             src/JacksRentals.hs:87:5-51             1018        780    0.0    0.0     0.0    0.0
-               overnightMove                     JacksRentals             src/JacksRentals.hs:(92,1)-(103,46)     1019       1144    0.0    0.0     0.0    0.0
-              businessDynamics.transportReward   JacksRentals             src/JacksRentals.hs:86:5-66             1048        780    0.0    0.0     0.0    0.0
-              salesDynamics                      JacksRentals             src/JacksRentals.hs:(122,1)-(128,39)    1020        780    0.4    0.6     0.7    0.9
-               rewardSalesResult                 JacksRentals             src/JacksRentals.hs:(111,1)-(118,35)    1025    2932380    0.2    0.3     0.3    0.3
-                rewardSalesResult.jointProb      JacksRentals             src/JacksRentals.hs:118:5-35            1026    2932380    0.0    0.0     0.0    0.0
-                rewardSalesResult.es             JacksRentals             src/JacksRentals.hs:116:5-103           1040     727528    0.1    0.0     0.1    0.0
-                rewardSalesResult.totalRentals   JacksRentals             src/JacksRentals.hs:117:5-53            1047     727528    0.0    0.0     0.0    0.0
-               salesDynamics.rentalsL1           JacksRentals             src/JacksRentals.hs:124:5-59            1021        780    0.0    0.0     0.0    0.0
-                capRentals                       JacksRentals             src/JacksRentals.hs:(74,1)-(78,37)      1022       2584    0.0    0.0     0.0    0.0
-                 capRentals.sumProb              JacksRentals             src/JacksRentals.hs:78:11-37            1051        756    0.0    0.0     0.0    0.0
-               salesDynamics.rentalsL2           JacksRentals             src/JacksRentals.hs:125:5-59            1023        780    0.0    0.0     0.0    0.0
-                capRentals                       JacksRentals             src/JacksRentals.hs:(74,1)-(78,37)      1024       8732    0.0    0.0     0.0    0.0
-                 capRentals.sumProb              JacksRentals             src/JacksRentals.hs:78:11-37            1073        308    0.0    0.0     0.0    0.0
+             jacksMDP                            JacksRentals             src/JacksRentals.hs:34:1-57              790          0    0.0    0.0     6.4   13.0
+              businessDynamics                   JacksRentals             src/JacksRentals.hs:(86,1)-(89,51)       791       3600    0.8    3.0     6.4   13.0
+               businessDynamics.\                JacksRentals             src/JacksRentals.hs:86:59-85             835   17239680    0.3    0.3     0.3    0.3
+               businessDynamics.morningState     JacksRentals             src/JacksRentals.hs:89:5-51              792       3600    0.0    0.0     0.0    0.0
+                overnightMove                    JacksRentals             src/JacksRentals.hs:(94,1)-(105,46)      793       4740    0.0    0.0     0.0    0.0
+               businessDynamics.transportReward  JacksRentals             src/JacksRentals.hs:88:5-66             1013       3600    0.0    0.0     0.0    0.0
+               salesDynamics                     JacksRentals             src/JacksRentals.hs:(124,1)-(130,39)     794       3600    1.6    3.5     5.3    9.7
+                rewardSalesResult                JacksRentals             src/JacksRentals.hs:(113,1)-(120,35)     831   17239680    2.4    5.5     3.7    6.2
+                 rewardSalesResult.es            JacksRentals             src/JacksRentals.hs:118:5-103           1005   17239680    1.0    0.3     1.0    0.3
+                 rewardSalesResult.jointProb     JacksRentals             src/JacksRentals.hs:120:5-35             832   17239680    0.0    0.0     0.0    0.0
+                 rewardSalesResult.totalRentals  JacksRentals             src/JacksRentals.hs:119:5-53            1012   17239680    0.2    0.3     0.2    0.3
+                salesDynamics.rentalsL1          JacksRentals             src/JacksRentals.hs:126:5-59             795       3600    0.0    0.0     0.0    0.0
+                 capRentals                      JacksRentals             src/JacksRentals.hs:(76,1)-(80,37)       796      24240    0.0    0.0     0.0    0.0
+                  capRentals.sumProb             JacksRentals             src/JacksRentals.hs:80:11-37            1015       3600    0.0    0.0     0.0    0.0
+                salesDynamics.rentalsL2          JacksRentals             src/JacksRentals.hs:127:5-59             802       3600    0.0    0.0     0.0    0.0
+                 capRentals                      JacksRentals             src/JacksRentals.hs:(76,1)-(80,37)       803      21960    0.0    0.0     0.0    0.0
+                  capRentals.sumProb             JacksRentals             src/JacksRentals.hs:80:11-37            1014       3600    0.0    0.0     0.0    0.0
+          argMax.compareAndReplace.valComp       OptTools                 src/OptTools.hs:7:88-122                 784       3600    0.0    0.0     0.0    0.0
+          policyImprovement.accumActions.qp      PolicyIteration          src/PolicyIteration.hs:86:9-42          1016          0    0.0    0.0     1.0    1.1
+           q_pi                                  PolicyIteration          src/PolicyIteration.hs:(47,1)-(49,56)   1017        396    0.0    0.0     1.0    1.1
+            q_pi.f                               PolicyIteration          src/PolicyIteration.hs:49:5-56          1029    1192320    0.0    0.0     0.6    0.2
+             policyImprovement.go.evt            PolicyIteration          src/PolicyIteration.hs:73:21-46         1031          0    0.0    0.0     0.5    0.2
+              policyImprovement.evaluatedVT      PolicyIteration          src/PolicyIteration.hs:78:5-48          1032          0    0.0    0.0     0.5    0.2
+               policyEvaluation                  PolicyIteration          src/PolicyIteration.hs:(52,1)-(68,47)   1033          0    0.0    0.0     0.5    0.2
+                policyEvaluation.go              PolicyIteration          src/PolicyIteration.hs:(54,5)-(59,21)   1034          0    0.0    0.0     0.5    0.2
+                 policyEvaluation.go.(...)       PolicyIteration          src/PolicyIteration.hs:54:17-94         1036          0    0.0    0.0     0.5    0.2
+                  vtFromMap                      PolicyIteration          src/PolicyIteration.hs:24:1-75          1037          0    0.0    0.0     0.5    0.2
+                   vtFromMap.\                   PolicyIteration          src/PolicyIteration.hs:24:24-74         1038    1192320    0.0    0.0     0.5    0.2
+                    lookup#                      Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1039    1192320    0.3    0.1     0.5    0.2
+                     unArray                     Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1046    2956688    0.0    0.0     0.0    0.0
+                     sparseIndex                 Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1047    1764368    0.0    0.0     0.0    0.0
+                     hash                        Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1040    1192320    0.0    0.0     0.2    0.1
+                      hash                       Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1041    1192320    0.1    0.0     0.1    0.1
+                       hashWithSalt              Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1043          0    0.0    0.0     0.1    0.0
+                        defaultHashWithSalt      Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1044    1192320    0.0    0.0     0.1    0.0
+                         combine                 Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1045    1192320    0.0    0.0     0.0    0.0
+                     lookup#.\                   Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1048    1192320    0.0    0.0     0.0    0.0
+                 policyEvaluation.go.newVT       PolicyIteration          src/PolicyIteration.hs:54:17-94         1035          0    0.0    0.0     0.0    0.0
+            jacksMDP                             JacksRentals             src/JacksRentals.hs:34:1-57             1018          0    0.0    0.0     0.5    0.9
+             businessDynamics                    JacksRentals             src/JacksRentals.hs:(86,1)-(89,51)      1019        396    0.1    0.2     0.5    0.9
+              businessDynamics.\                 JacksRentals             src/JacksRentals.hs:86:59-85            1030    1192320    0.0    0.0     0.0    0.0
+              businessDynamics.morningState      JacksRentals             src/JacksRentals.hs:89:5-51             1020        396    0.0    0.0     0.0    0.0
+               overnightMove                     JacksRentals             src/JacksRentals.hs:(94,1)-(105,46)     1021        576    0.0    0.0     0.0    0.0
+              businessDynamics.transportReward   JacksRentals             src/JacksRentals.hs:88:5-66             1050        396    0.0    0.0     0.0    0.0
+              salesDynamics                      JacksRentals             src/JacksRentals.hs:(124,1)-(130,39)    1022        396    0.1    0.2     0.4    0.7
+               rewardSalesResult                 JacksRentals             src/JacksRentals.hs:(113,1)-(120,35)    1027    1192320    0.2    0.4     0.2    0.4
+                rewardSalesResult.es             JacksRentals             src/JacksRentals.hs:118:5-103           1042    1192320    0.1    0.0     0.1    0.0
+                rewardSalesResult.jointProb      JacksRentals             src/JacksRentals.hs:120:5-35            1028    1192320    0.0    0.0     0.0    0.0
+                rewardSalesResult.totalRentals   JacksRentals             src/JacksRentals.hs:119:5-53            1049    1192320    0.0    0.0     0.0    0.0
+               salesDynamics.rentalsL1           JacksRentals             src/JacksRentals.hs:126:5-59            1023        396    0.0    0.0     0.0    0.0
+                capRentals                       JacksRentals             src/JacksRentals.hs:(76,1)-(80,37)      1024       1056    0.0    0.0     0.0    0.0
+                 capRentals.sumProb              JacksRentals             src/JacksRentals.hs:80:11-37            1052        396    0.0    0.0     0.0    0.0
+               salesDynamics.rentalsL2           JacksRentals             src/JacksRentals.hs:127:5-59            1025        396    0.0    0.0     0.0    0.0
+                capRentals                       JacksRentals             src/JacksRentals.hs:(76,1)-(80,37)      1026       3336    0.0    0.0     0.0    0.0
+                 capRentals.sumProb              JacksRentals             src/JacksRentals.hs:80:11-37            1051        396    0.0    0.0     0.0    0.0
         jacksMDP                                 JacksRentals             src/JacksRentals.hs:34:1-57              781          0    0.0    0.0     0.0    0.0
-         validCarsToMove                         JacksRentals             src/JacksRentals.hs:53:1-60              782        784    0.0    0.0     0.0    0.0
-       policyImprovement.accumActions.newPolMap  PolicyIteration          src/PolicyIteration.hs:83:9-59          1063        784    0.0    0.0     0.0    0.0
-        insert                                   Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:139:1-27    1064        784    0.0    0.0     0.0    0.0
-         insert                                  Data.HashMap.Base        Data/HashMap/Base.hs:656:1-37           1065        784    0.0    0.0     0.0    0.0
-          hash                                   Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1066        784    0.0    0.0     0.0    0.0
-           hash                                  Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1067        784    0.0    0.0     0.0    0.0
-            hashWithSalt                         Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1068          0    0.0    0.0     0.0    0.0
-             defaultHashWithSalt                 Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1069        784    0.0    0.0     0.0    0.0
-              combine                            Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1070        784    0.0    0.0     0.0    0.0
-          insert'                                Data.HashMap.Base        Data/HashMap/Base.hs:(660,1)-(691,76)   1071        784    0.0    0.0     0.0    0.0
-           insert'.go                            Data.HashMap.Base        Data/HashMap/Base.hs:(662,5)-(691,76)   1072       1744    0.0    0.0     0.0    0.0
-            unMArray                             Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14          1074       2536    0.0    0.0     0.0    0.0
-            clone16                              Data.HashMap.Base        Data/HashMap/Base.hs:(1851,1)-(1852,19) 1090        720    0.0    0.0     0.0    0.0
-             unArray                             Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1091        720    0.0    0.0     0.0    0.0
-            insert'.go.i                         Data.HashMap.Base        Data/HashMap/Base.hs:688:13-25          1087        720    0.0    0.0     0.0    0.0
-            insert'.go.st                        Data.HashMap.Base        Data/HashMap/Base.hs:683:13-32          1086        720    0.0    0.0     0.0    0.0
-             unArray                             Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1088        720    0.0    0.0     0.0    0.0
-            insert'.go.st'                       Data.HashMap.Base        Data/HashMap/Base.hs:684:13-48          1089        720    0.0    0.0     0.0    0.0
-            insert'.go.i                         Data.HashMap.Base        Data/HashMap/Base.hs:681:13-31          1080        712    0.0    0.0     0.0    0.0
-             sparseIndex                         Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1081        712    0.0    0.0     0.0    0.0
-            insert'.go.m                         Data.HashMap.Base        Data/HashMap/Base.hs:680:13-24          1075        712    0.0    0.0     0.0    0.0
-            unArray                              Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1095        480    0.0    0.0     0.0    0.0
-            insert'.go.ary'                      Data.HashMap.Base        Data/HashMap/Base.hs:672:17-56          1076        472    0.0    0.0     0.0    0.0
-             copy                                Data.HashMap.Array       Data/HashMap/Array.hs:(328,1)-(333,30)  1079        944    0.0    0.0     0.0    0.0
-              copy.\                             Data.HashMap.Array       Data/HashMap/Array.hs:(332,9)-(333,30)  1082        944    0.0    0.0     0.0    0.0
-               unArray                           Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1084        944    0.0    0.0     0.0    0.0
-               unMArray                          Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14          1083        944    0.0    0.0     0.0    0.0
-             unMArray                            Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14          1085        944    0.0    0.0     0.0    0.0
-             new_                                Data.HashMap.Array       Data/HashMap/Array.hs:256:1-28          1078        472    0.0    0.0     0.0    0.0
-             unArray                             Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1077        472    0.0    0.0     0.0    0.0
-            insert'.go.st                        Data.HashMap.Base        Data/HashMap/Base.hs:675:17-36          1092        240    0.0    0.0     0.0    0.0
-             unArray                             Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1093        240    0.0    0.0     0.0    0.0
-            insert'.go.st'                       Data.HashMap.Base        Data/HashMap/Base.hs:676:17-52          1094        240    0.0    0.0     0.0    0.0
-       policyImprovement.accumActions.stableNew  PolicyIteration          src/PolicyIteration.hs:85:9-57           725        784    0.0    0.0     0.0    0.0
-       policyImprovement.accumActions.qp         PolicyIteration          src/PolicyIteration.hs:86:9-42           786        780    0.0    0.0     0.0    0.0
-       policyImprovement.accumActions.oldAction  PolicyIteration          src/PolicyIteration.hs:82:9-29           726        234    0.0    0.0     0.0    0.0
+         validCarsToMove                         JacksRentals             src/JacksRentals.hs:53:1-60              782        400    0.0    0.0     0.0    0.0
+       policyImprovement.accumActions.newPolMap  PolicyIteration          src/PolicyIteration.hs:83:9-59          1064        400    0.0    0.0     0.0    0.0
+        insert                                   Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:139:1-27    1065        400    0.0    0.0     0.0    0.0
+         insert                                  Data.HashMap.Base        Data/HashMap/Base.hs:656:1-37           1066        400    0.0    0.0     0.0    0.0
+          hash                                   Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1067        400    0.0    0.0     0.0    0.0
+           hash                                  Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1068        400    0.0    0.0     0.0    0.0
+            hashWithSalt                         Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1069          0    0.0    0.0     0.0    0.0
+             defaultHashWithSalt                 Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1070        400    0.0    0.0     0.0    0.0
+              combine                            Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1071        400    0.0    0.0     0.0    0.0
+          insert'                                Data.HashMap.Base        Data/HashMap/Base.hs:(660,1)-(691,76)   1072        400    0.0    0.0     0.0    0.0
+           insert'.go                            Data.HashMap.Base        Data/HashMap/Base.hs:(662,5)-(691,76)   1073        800    0.0    0.0     0.0    0.0
+            unMArray                             Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14          1074       1064    0.0    0.0     0.0    0.0
+            insert'.go.i                         Data.HashMap.Base        Data/HashMap/Base.hs:681:13-31          1080        384    0.0    0.0     0.0    0.0
+             sparseIndex                         Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1081        384    0.0    0.0     0.0    0.0
+            insert'.go.m                         Data.HashMap.Base        Data/HashMap/Base.hs:680:13-24          1075        384    0.0    0.0     0.0    0.0
+            clone16                              Data.HashMap.Base        Data/HashMap/Base.hs:(1851,1)-(1852,19) 1094        280    0.0    0.0     0.0    0.0
+             unArray                             Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1095        280    0.0    0.0     0.0    0.0
+            insert'.go.i                         Data.HashMap.Base        Data/HashMap/Base.hs:688:13-25          1091        280    0.0    0.0     0.0    0.0
+            insert'.go.st                        Data.HashMap.Base        Data/HashMap/Base.hs:683:13-32          1090        280    0.0    0.0     0.0    0.0
+             unArray                             Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1092        280    0.0    0.0     0.0    0.0
+            insert'.go.st'                       Data.HashMap.Base        Data/HashMap/Base.hs:684:13-48          1093        280    0.0    0.0     0.0    0.0
+            insert'.go.ary'                      Data.HashMap.Base        Data/HashMap/Base.hs:672:17-56          1076        264    0.0    0.0     0.0    0.0
+             copy                                Data.HashMap.Array       Data/HashMap/Array.hs:(328,1)-(333,30)  1079        528    0.0    0.0     0.0    0.0
+              copy.\                             Data.HashMap.Array       Data/HashMap/Array.hs:(332,9)-(333,30)  1082        528    0.0    0.0     0.0    0.0
+               unArray                           Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1084        528    0.0    0.0     0.0    0.0
+               unMArray                          Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14          1083        528    0.0    0.0     0.0    0.0
+             unMArray                            Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14          1085        528    0.0    0.0     0.0    0.0
+             new_                                Data.HashMap.Array       Data/HashMap/Array.hs:256:1-28          1078        264    0.0    0.0     0.0    0.0
+             unArray                             Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1077        264    0.0    0.0     0.0    0.0
+            unArray                              Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1089        240    0.0    0.0     0.0    0.0
+            insert'.go.st                        Data.HashMap.Base        Data/HashMap/Base.hs:675:17-36          1086        120    0.0    0.0     0.0    0.0
+             unArray                             Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1087        120    0.0    0.0     0.0    0.0
+            insert'.go.st'                       Data.HashMap.Base        Data/HashMap/Base.hs:676:17-52          1088        120    0.0    0.0     0.0    0.0
+       policyImprovement.accumActions.stableNew  PolicyIteration          src/PolicyIteration.hs:85:9-57           725        400    0.0    0.0     0.0    0.0
+       policyImprovement.accumActions.qp         PolicyIteration          src/PolicyIteration.hs:86:9-42           786        396    0.0    0.0     0.0    0.0
+       policyImprovement.accumActions.oldAction  PolicyIteration          src/PolicyIteration.hs:82:9-29           726        155    0.0    0.0     0.0    0.0
         jacksPolInit                             JacksRentals             src/JacksRentals.hs:41:1-86              729          0    0.0    0.0     0.0    0.0
          polFromMap                              PolicyIteration          src/PolicyIteration.hs:42:1-63           730          0    0.0    0.0     0.0    0.0
-          polFromMap.\                           PolicyIteration          src/PolicyIteration.hs:42:25-62          731         12    0.0    0.0     0.0    0.0
-           lookup#                               Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            732         12    0.0    0.0     0.0    0.0
-            unArray                              Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           775         34    0.0    0.0     0.0    0.0
-            sparseIndex                          Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           776         22    0.0    0.0     0.0    0.0
-            hash                                 Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            733         12    0.0    0.0     0.0    0.0
-             hash                                Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          734         12    0.0    0.0     0.0    0.0
+          polFromMap.\                           PolicyIteration          src/PolicyIteration.hs:42:25-62          731          2    0.0    0.0     0.0    0.0
+           lookup#                               Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            732          2    0.0    0.0     0.0    0.0
+            unArray                              Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           775          6    0.0    0.0     0.0    0.0
+            sparseIndex                          Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           776          4    0.0    0.0     0.0    0.0
+            hash                                 Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            733          2    0.0    0.0     0.0    0.0
+             hash                                Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          734          2    0.0    0.0     0.0    0.0
               hashWithSalt                       Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          736          0    0.0    0.0     0.0    0.0
-               defaultHashWithSalt               Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          737         12    0.0    0.0     0.0    0.0
-                combine                          Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          739         12    0.0    0.0     0.0    0.0
-            lookup#.\                            Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           777         12    0.0    0.0     0.0    0.0
-        policyImprovement.go.newPol              PolicyIteration          src/PolicyIteration.hs:73:55-144        1054          0    0.0    0.0     0.0    0.0
-         polFromMap                              PolicyIteration          src/PolicyIteration.hs:42:1-63          1055          0    0.0    0.0     0.0    0.0
-          polFromMap.\                           PolicyIteration          src/PolicyIteration.hs:42:25-62         1056        222    0.0    0.0     0.0    0.0
-           lookup#                               Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1057        222    0.0    0.0     0.0    0.0
-            unArray                              Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1096        586    0.0    0.0     0.0    0.0
-            sparseIndex                          Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1097        364    0.0    0.0     0.0    0.0
-            hash                                 Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1058        222    0.0    0.0     0.0    0.0
-             hash                                Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1059        222    0.0    0.0     0.0    0.0
-              hashWithSalt                       Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1060          0    0.0    0.0     0.0    0.0
-               defaultHashWithSalt               Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1061        222    0.0    0.0     0.0    0.0
-                combine                          Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1062        222    0.0    0.0     0.0    0.0
-            lookup#.\                            Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1098        222    0.0    0.0     0.0    0.0
-      polFromMap                                 PolicyIteration          src/PolicyIteration.hs:42:1-63          1053          4    0.0    0.0     0.0    0.0
-     policyImprovement.go.evt                    PolicyIteration          src/PolicyIteration.hs:73:21-46          839          4    0.0    0.0    74.7   74.6
-      policyImprovement.evaluatedVT              PolicyIteration          src/PolicyIteration.hs:78:5-48           841          0    0.0    0.0    74.7   74.6
-       policyEvaluation                          PolicyIteration          src/PolicyIteration.hs:(52,1)-(68,47)    843          4    0.0    0.0    74.7   74.6
-        policyEvaluation.go                      PolicyIteration          src/PolicyIteration.hs:(54,5)-(59,21)    844        193    0.0    0.0    74.7   74.6
-         policyEvaluation.go.(...)               PolicyIteration          src/PolicyIteration.hs:54:17-94          846        193    0.0    0.0    74.7   74.6
-          policyEvaluation.accumValues           PolicyIteration          src/PolicyIteration.hs:(63,5)-(68,47)    847      37828    0.0    0.0    74.7   74.6
-           policyEvaluation.accumValues.newDelta PolicyIteration          src/PolicyIteration.hs:67:9-52           886      37828    0.0    0.0     0.0    0.0
-           policyEvaluation.accumValues.newMap   PolicyIteration          src/PolicyIteration.hs:68:9-47           946      37828    0.0    0.0     0.1    0.1
-            insert                               Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:139:1-27     947      37828    0.0    0.0     0.1    0.1
-             insert                              Data.HashMap.Base        Data/HashMap/Base.hs:656:1-37            948      37828    0.0    0.0     0.1    0.1
-              hash                               Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            949      37828    0.0    0.0     0.0    0.0
-               hash                              Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          950      37828    0.0    0.0     0.0    0.0
+               defaultHashWithSalt               Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          737          2    0.0    0.0     0.0    0.0
+                combine                          Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          739          2    0.0    0.0     0.0    0.0
+            lookup#.\                            Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           777          2    0.0    0.0     0.0    0.0
+        policyImprovement.go.newPol              PolicyIteration          src/PolicyIteration.hs:73:55-144        1055          0    0.0    0.0     0.0    0.0
+         polFromMap                              PolicyIteration          src/PolicyIteration.hs:42:1-63          1056          0    0.0    0.0     0.0    0.0
+          polFromMap.\                           PolicyIteration          src/PolicyIteration.hs:42:25-62         1057        153    0.0    0.0     0.0    0.0
+           lookup#                               Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1058        153    0.0    0.0     0.0    0.0
+            unArray                              Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1096        356    0.0    0.0     0.0    0.0
+            sparseIndex                          Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1097        203    0.0    0.0     0.0    0.0
+            hash                                 Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1059        153    0.0    0.0     0.0    0.0
+             hash                                Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1060        153    0.0    0.0     0.0    0.0
+              hashWithSalt                       Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1061          0    0.0    0.0     0.0    0.0
+               defaultHashWithSalt               Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1062        153    0.0    0.0     0.0    0.0
+                combine                          Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1063        153    0.0    0.0     0.0    0.0
+            lookup#.\                            Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1098        153    0.0    0.0     0.0    0.0
+      polFromMap                                 PolicyIteration          src/PolicyIteration.hs:42:1-63          1054          4    0.0    0.0     0.0    0.0
+     policyImprovement.go.evt                    PolicyIteration          src/PolicyIteration.hs:73:21-46          836          4    0.0    0.0    83.3   83.6
+      policyImprovement.evaluatedVT              PolicyIteration          src/PolicyIteration.hs:78:5-48           838          0    0.0    0.0    83.3   83.6
+       policyEvaluation                          PolicyIteration          src/PolicyIteration.hs:(52,1)-(68,47)    840          4    0.0    0.0    83.3   83.6
+        policyEvaluation.go                      PolicyIteration          src/PolicyIteration.hs:(54,5)-(59,21)    841        248    0.0    0.0    83.3   83.6
+         policyEvaluation.go.(...)               PolicyIteration          src/PolicyIteration.hs:54:17-94          843        248    0.0    0.0    83.3   83.6
+          policyEvaluation.accumValues           PolicyIteration          src/PolicyIteration.hs:(63,5)-(68,47)    844      24800    0.0    0.0    83.3   83.6
+           policyEvaluation.accumValues.newDelta PolicyIteration          src/PolicyIteration.hs:67:9-52           883      24800    0.0    0.0     0.0    0.0
+           policyEvaluation.accumValues.newMap   PolicyIteration          src/PolicyIteration.hs:68:9-47           946      24800    0.0    0.0     0.0    0.0
+            insert                               Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:139:1-27     947      24800    0.0    0.0     0.0    0.0
+             insert                              Data.HashMap.Base        Data/HashMap/Base.hs:656:1-37            948      24800    0.0    0.0     0.0    0.0
+              hash                               Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            949      24800    0.0    0.0     0.0    0.0
+               hash                              Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          950      24800    0.0    0.0     0.0    0.0
                 hashWithSalt                     Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          951          0    0.0    0.0     0.0    0.0
-                 defaultHashWithSalt             Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          952      37828    0.0    0.0     0.0    0.0
-                  combine                        Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          953      37828    0.0    0.0     0.0    0.0
-              insert'                            Data.HashMap.Base        Data/HashMap/Base.hs:(660,1)-(691,76)    954      37828    0.0    0.0     0.1    0.1
-               insert'.go                        Data.HashMap.Base        Data/HashMap/Base.hs:(662,5)-(691,76)    955      84148    0.0    0.0     0.1    0.1
-                unMArray                         Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           956     122362    0.0    0.0     0.0    0.0
-                clone16                          Data.HashMap.Base        Data/HashMap/Base.hs:(1851,1)-(1852,19)  972      34740    0.0    0.0     0.0    0.0
-                 unArray                         Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           973      34740    0.0    0.0     0.0    0.0
-                insert'.go.i                     Data.HashMap.Base        Data/HashMap/Base.hs:688:13-25           969      34740    0.0    0.0     0.0    0.0
-                insert'.go.st                    Data.HashMap.Base        Data/HashMap/Base.hs:683:13-32           968      34740    0.0    0.0     0.0    0.0
-                 unArray                         Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           970      34740    0.0    0.0     0.0    0.0
-                insert'.go.st'                   Data.HashMap.Base        Data/HashMap/Base.hs:684:13-48           971      34740    0.0    0.0     0.0    0.0
-                insert'.go.i                     Data.HashMap.Base        Data/HashMap/Base.hs:681:13-31           962      34354    0.0    0.0     0.0    0.0
-                 sparseIndex                     Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           963      34354    0.0    0.0     0.0    0.0
-                insert'.go.m                     Data.HashMap.Base        Data/HashMap/Base.hs:680:13-24           957      34354    0.0    0.0     0.0    0.0
-                unArray                          Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           978      23160    0.0    0.0     0.0    0.0
-                insert'.go.ary'                  Data.HashMap.Base        Data/HashMap/Base.hs:672:17-56           958      22774    0.0    0.0     0.0    0.0
-                 copy                            Data.HashMap.Array       Data/HashMap/Array.hs:(328,1)-(333,30)   961      45548    0.0    0.0     0.0    0.0
-                  copy.\                         Data.HashMap.Array       Data/HashMap/Array.hs:(332,9)-(333,30)   964      45548    0.0    0.0     0.0    0.0
-                   unArray                       Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           966      45548    0.0    0.0     0.0    0.0
-                   unMArray                      Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           965      45548    0.0    0.0     0.0    0.0
-                 unMArray                        Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           967      45548    0.0    0.0     0.0    0.0
-                 new_                            Data.HashMap.Array       Data/HashMap/Array.hs:256:1-28           960      22774    0.0    0.0     0.0    0.0
-                 unArray                         Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           959      22774    0.0    0.0     0.0    0.0
-                insert'.go.st                    Data.HashMap.Base        Data/HashMap/Base.hs:675:17-36           975      11580    0.0    0.0     0.0    0.0
-                 unArray                         Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           976      11580    0.0    0.0     0.0    0.0
-                insert'.go.st'                   Data.HashMap.Base        Data/HashMap/Base.hs:676:17-52           977      11580    0.0    0.0     0.0    0.0
-           policyEvaluation.accumValues.newVal   PolicyIteration          src/PolicyIteration.hs:65:9-60           887      37828    0.0    0.0    74.6   74.6
-            q_pi                                 PolicyIteration          src/PolicyIteration.hs:(47,1)-(49,56)    888      37828    2.2    0.0    74.5   74.5
-             q_pi.f                              PolicyIteration          src/PolicyIteration.hs:49:5-56           912   45101925    0.5    0.0    30.2    7.6
-              jacksVTInit                        JacksRentals             src/JacksRentals.hs:40:1-33              914          0    0.0    0.0     0.2    0.0
-               initZeros                         PolicyIteration          src/PolicyIteration.hs:21:1-162          915          0    0.0    0.0     0.2    0.0
-                initZeros.\                      PolicyIteration          src/PolicyIteration.hs:21:27-161         916     228992    0.0    0.0     0.2    0.0
-                 lookup#                         Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            917     228992    0.1    0.0     0.2    0.0
-                  unArray                        Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           924     598749    0.0    0.0     0.0    0.0
-                  sparseIndex                    Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           925     369757    0.0    0.0     0.0    0.0
-                  hash                           Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            918     228992    0.0    0.0     0.0    0.0
-                   hash                          Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          919     228992    0.0    0.0     0.0    0.0
-                    hashWithSalt                 Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          921          0    0.0    0.0     0.0    0.0
-                     defaultHashWithSalt         Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          922     228992    0.0    0.0     0.0    0.0
-                      combine                    Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          923     228992    0.0    0.0     0.0    0.0
-                  lookup#.\                      Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           926     228992    0.0    0.0     0.0    0.0
-              policyEvaluation.go.newVT          PolicyIteration          src/PolicyIteration.hs:54:17-94          982          0    1.1    0.0    29.5    7.6
-               vtFromMap                         PolicyIteration          src/PolicyIteration.hs:24:1-75           983          0    0.6    0.0    28.5    7.6
-                vtFromMap.\                      PolicyIteration          src/PolicyIteration.hs:24:24-74          984   44872933    0.7    0.0    27.9    7.6
-                 lookup#                         Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            985   44872933   18.0    5.1    27.2    7.6
-                  unArray                        Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           991  117602471    0.0    0.0     0.0    0.0
-                  sparseIndex                    Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           992   72729538    0.6    0.0     0.6    0.0
-                  hash                           Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            986   44872933    1.7    0.0     8.6    2.5
-                   hash                          Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          987   44872933    3.6    1.5     6.9    2.5
-                    hashWithSalt                 Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          988          0    0.3    0.0     3.3    1.0
-                     defaultHashWithSalt         Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          989   44872933    2.5    0.0     3.0    1.0
-                      combine                    Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          990   44872933    0.5    1.0     0.5    1.0
-                  lookup#.\                      Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           993   44872933    0.0    0.0     0.0    0.0
-             jacksMDP                            JacksRentals             src/JacksRentals.hs:34:1-57              889          0    0.0    0.0    42.1   66.9
-              businessDynamics                   JacksRentals             src/JacksRentals.hs:(84,1)-(87,51)       902      37828    2.9    9.4    42.1   66.9
-               businessDynamics.\                JacksRentals             src/JacksRentals.hs:84:59-85             913   45101925    1.1    1.0     1.1    1.0
-               businessDynamics.morningState     JacksRentals             src/JacksRentals.hs:87:5-51              903      37828    0.0    0.0     0.0    0.0
-                overnightMove                    JacksRentals             src/JacksRentals.hs:(92,1)-(103,46)      904      37828    0.0    0.0     0.0    0.0
-               businessDynamics.transportReward  JacksRentals             src/JacksRentals.hs:86:5-66              930      37828    0.0    0.0     0.0    0.0
-               salesDynamics                     JacksRentals             src/JacksRentals.hs:(122,1)-(128,39)     905      37828   18.3   36.4    38.0   56.5
-                rewardSalesResult                JacksRentals             src/JacksRentals.hs:(111,1)-(118,35)     910  186966450   14.9   17.3    19.6   20.0
-                 rewardSalesResult.jointProb     JacksRentals             src/JacksRentals.hs:118:5-35             911  186966450    0.1    0.0     0.1    0.0
-                 rewardSalesResult.es            JacksRentals             src/JacksRentals.hs:116:5-103            920   45101925    3.6    1.7     3.6    1.7
-                 rewardSalesResult.totalRentals  JacksRentals             src/JacksRentals.hs:117:5-53             928   45101925    0.9    1.0     0.9    1.0
-                salesDynamics.rentalsL1          JacksRentals             src/JacksRentals.hs:124:5-59             906      37828    0.0    0.0     0.1    0.1
-                 capRentals                      JacksRentals             src/JacksRentals.hs:(74,1)-(78,37)       907     251219    0.0    0.0     0.1    0.1
-                  capRentals.sumProb             JacksRentals             src/JacksRentals.hs:78:11-37             934      29144    0.1    0.0     0.1    0.0
-                salesDynamics.rentalsL2          JacksRentals             src/JacksRentals.hs:125:5-59             908      37828    0.0    0.0     0.1    0.1
-                 capRentals                      JacksRentals             src/JacksRentals.hs:(74,1)-(78,37)       909     299913    0.0    0.0     0.1    0.1
-                  capRentals.sumProb             JacksRentals             src/JacksRentals.hs:78:11-37             933      31246    0.1    0.0     0.1    0.0
-            jacksPolInit                         JacksRentals             src/JacksRentals.hs:41:1-86              890          0    0.0    0.0     0.0    0.0
-             polFromMap                          PolicyIteration          src/PolicyIteration.hs:42:1-63           891          0    0.0    0.0     0.0    0.0
-              polFromMap.\                       PolicyIteration          src/PolicyIteration.hs:42:25-62          892      15876    0.0    0.0     0.0    0.0
-               lookup#                           Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            893      15876    0.0    0.0     0.0    0.0
-                unArray                          Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           899      41472    0.0    0.0     0.0    0.0
-                sparseIndex                      Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           900      25596    0.0    0.0     0.0    0.0
-                hash                             Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            894      15876    0.0    0.0     0.0    0.0
-                 hash                            Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          895      15876    0.0    0.0     0.0    0.0
-                  hashWithSalt                   Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          896          0    0.0    0.0     0.0    0.0
-                   defaultHashWithSalt           Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          897      15876    0.0    0.0     0.0    0.0
-                    combine                      Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          898      15876    0.0    0.0     0.0    0.0
-                lookup#.\                        Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           901      15876    0.0    0.0     0.0    0.0
+                 defaultHashWithSalt             Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          952      24800    0.0    0.0     0.0    0.0
+                  combine                        Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          953      24800    0.0    0.0     0.0    0.0
+              insert'                            Data.HashMap.Base        Data/HashMap/Base.hs:(660,1)-(691,76)    954      24800    0.0    0.0     0.0    0.0
+               insert'.go                        Data.HashMap.Base        Data/HashMap/Base.hs:(662,5)-(691,76)    955      49600    0.0    0.0     0.0    0.0
+                unMArray                         Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           956      65968    0.0    0.0     0.0    0.0
+                insert'.go.i                     Data.HashMap.Base        Data/HashMap/Base.hs:681:13-31           962      23808    0.0    0.0     0.0    0.0
+                 sparseIndex                     Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           963      23808    0.0    0.0     0.0    0.0
+                insert'.go.m                     Data.HashMap.Base        Data/HashMap/Base.hs:680:13-24           957      23808    0.0    0.0     0.0    0.0
+                clone16                          Data.HashMap.Base        Data/HashMap/Base.hs:(1851,1)-(1852,19)  977      17360    0.0    0.0     0.0    0.0
+                 unArray                         Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           978      17360    0.0    0.0     0.0    0.0
+                insert'.go.i                     Data.HashMap.Base        Data/HashMap/Base.hs:688:13-25           974      17360    0.0    0.0     0.0    0.0
+                insert'.go.st                    Data.HashMap.Base        Data/HashMap/Base.hs:683:13-32           973      17360    0.0    0.0     0.0    0.0
+                 unArray                         Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           975      17360    0.0    0.0     0.0    0.0
+                insert'.go.st'                   Data.HashMap.Base        Data/HashMap/Base.hs:684:13-48           976      17360    0.0    0.0     0.0    0.0
+                insert'.go.ary'                  Data.HashMap.Base        Data/HashMap/Base.hs:672:17-56           958      16368    0.0    0.0     0.0    0.0
+                 copy                            Data.HashMap.Array       Data/HashMap/Array.hs:(328,1)-(333,30)   961      32736    0.0    0.0     0.0    0.0
+                  copy.\                         Data.HashMap.Array       Data/HashMap/Array.hs:(332,9)-(333,30)   964      32736    0.0    0.0     0.0    0.0
+                   unArray                       Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           966      32736    0.0    0.0     0.0    0.0
+                   unMArray                      Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           965      32736    0.0    0.0     0.0    0.0
+                 unMArray                        Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           967      32736    0.0    0.0     0.0    0.0
+                 new_                            Data.HashMap.Array       Data/HashMap/Array.hs:256:1-28           960      16368    0.0    0.0     0.0    0.0
+                 unArray                         Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           959      16368    0.0    0.0     0.0    0.0
+                unArray                          Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           971      14880    0.0    0.0     0.0    0.0
+                insert'.go.st                    Data.HashMap.Base        Data/HashMap/Base.hs:675:17-36           968       7440    0.0    0.0     0.0    0.0
+                 unArray                         Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           969       7440    0.0    0.0     0.0    0.0
+                insert'.go.st'                   Data.HashMap.Base        Data/HashMap/Base.hs:676:17-52           970       7440    0.0    0.0     0.0    0.0
+           policyEvaluation.accumValues.newVal   PolicyIteration          src/PolicyIteration.hs:65:9-60           884      24800    0.0    0.0    83.2   83.5
+            q_pi                                 PolicyIteration          src/PolicyIteration.hs:(47,1)-(49,56)    885      24800    3.1    0.0    83.2   83.5
+             q_pi.f                              PolicyIteration          src/PolicyIteration.hs:49:5-56           909   93788160    0.6    0.0    45.4   12.8
+              jacksVTInit                        JacksRentals             src/JacksRentals.hs:40:1-33              911          0    0.0    0.0     0.2    0.0
+               initZeros                         PolicyIteration          src/PolicyIteration.hs:21:1-162          912          0    0.0    0.0     0.2    0.0
+                initZeros.\                      PolicyIteration          src/PolicyIteration.hs:21:27-161         913     363000    0.0    0.0     0.2    0.0
+                 lookup#                         Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            914     363000    0.1    0.0     0.2    0.0
+                  unArray                        Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           921     895730    0.0    0.0     0.0    0.0
+                  sparseIndex                    Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           922     532730    0.0    0.0     0.0    0.0
+                  hash                           Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            915     363000    0.0    0.0     0.1    0.0
+                   hash                          Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          916     363000    0.0    0.0     0.0    0.0
+                    hashWithSalt                 Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          918          0    0.0    0.0     0.0    0.0
+                     defaultHashWithSalt         Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          919     363000    0.0    0.0     0.0    0.0
+                      combine                    Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          920     363000    0.0    0.0     0.0    0.0
+                  lookup#.\                      Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           923     363000    0.0    0.0     0.0    0.0
+              policyEvaluation.go.newVT          PolicyIteration          src/PolicyIteration.hs:54:17-94          982          0    1.5    0.0    44.6   12.7
+               vtFromMap                         PolicyIteration          src/PolicyIteration.hs:24:1-75           983          0    0.8    0.0    43.1   12.7
+                vtFromMap.\                      PolicyIteration          src/PolicyIteration.hs:24:24-74          984   93425160    1.0    0.0    42.3   12.7
+                 lookup#                         Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            985   93425160   26.7    8.4    41.3   12.7
+                  unArray                        Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           991  230362528    0.0    0.0     0.0    0.0
+                  sparseIndex                    Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           992  136937368    0.8    0.0     0.8    0.0
+                  hash                           Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            986   93425160    2.6    0.0    13.7    4.3
+                   hash                          Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          987   93425160    5.6    2.6    11.2    4.3
+                    hashWithSalt                 Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          988          0    0.5    0.0     5.6    1.7
+                     defaultHashWithSalt         Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          989   93425160    4.2    0.0     5.1    1.7
+                      combine                    Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          990   93425160    0.9    1.7     0.9    1.7
+                  lookup#.\                      Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           993   93425160    0.0    0.0     0.0    0.0
+             jacksMDP                            JacksRentals             src/JacksRentals.hs:34:1-57              886          0    0.0    0.0    34.7   70.8
+              businessDynamics                   JacksRentals             src/JacksRentals.hs:(86,1)-(89,51)       899      24800    4.6   16.3    34.7   70.8
+               businessDynamics.\                JacksRentals             src/JacksRentals.hs:86:59-85             910   93788160    1.6    1.7     1.6    1.7
+               businessDynamics.morningState     JacksRentals             src/JacksRentals.hs:89:5-51              900      24800    0.0    0.0     0.0    0.0
+                overnightMove                    JacksRentals             src/JacksRentals.hs:(94,1)-(105,46)      901      24800    0.0    0.0     0.0    0.0
+               businessDynamics.transportReward  JacksRentals             src/JacksRentals.hs:88:5-66              927      24800    0.0    0.0     0.0    0.0
+               salesDynamics                     JacksRentals             src/JacksRentals.hs:(124,1)-(130,39)     902      24800    9.2   19.0    28.5   52.8
+                rewardSalesResult                JacksRentals             src/JacksRentals.hs:(113,1)-(120,35)     907   93788160   12.0   30.0    19.2   33.6
+                 rewardSalesResult.es            JacksRentals             src/JacksRentals.hs:118:5-103            917   93788160    5.8    1.9     5.8    1.9
+                 rewardSalesResult.jointProb     JacksRentals             src/JacksRentals.hs:120:5-35             908   93788160    0.1    0.0     0.1    0.0
+                 rewardSalesResult.totalRentals  JacksRentals             src/JacksRentals.hs:119:5-53             925   93788160    1.3    1.7     1.3    1.7
+                salesDynamics.rentalsL1          JacksRentals             src/JacksRentals.hs:126:5-59             903      24800    0.0    0.0     0.0    0.0
+                 capRentals                      JacksRentals             src/JacksRentals.hs:(76,1)-(80,37)       904     124167    0.0    0.0     0.0    0.0
+                  capRentals.sumProb             JacksRentals             src/JacksRentals.hs:80:11-37             934      24800    0.0    0.0     0.0    0.0
+                salesDynamics.rentalsL2          JacksRentals             src/JacksRentals.hs:127:5-59             905      24800    0.0    0.0     0.1    0.0
+                 capRentals                      JacksRentals             src/JacksRentals.hs:(76,1)-(80,37)       906     148633    0.0    0.0     0.1    0.0
+                  capRentals.sumProb             JacksRentals             src/JacksRentals.hs:80:11-37             932      24800    0.0    0.0     0.0    0.0
+            jacksPolInit                         JacksRentals             src/JacksRentals.hs:41:1-86              887          0    0.0    0.0     0.0    0.0
+             polFromMap                          PolicyIteration          src/PolicyIteration.hs:42:1-63           888          0    0.0    0.0     0.0    0.0
+              polFromMap.\                       PolicyIteration          src/PolicyIteration.hs:42:25-62          889      10400    0.0    0.0     0.0    0.0
+               lookup#                           Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            890      10400    0.0    0.0     0.0    0.0
+                unArray                          Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           896      24128    0.0    0.0     0.0    0.0
+                sparseIndex                      Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           897      13728    0.0    0.0     0.0    0.0
+                hash                             Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            891      10400    0.0    0.0     0.0    0.0
+                 hash                            Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          892      10400    0.0    0.0     0.0    0.0
+                  hashWithSalt                   Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          893          0    0.0    0.0     0.0    0.0
+                   defaultHashWithSalt           Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          894      10400    0.0    0.0     0.0    0.0
+                    combine                      Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          895      10400    0.0    0.0     0.0    0.0
+                lookup#.\                        Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           898      10400    0.0    0.0     0.0    0.0
             policyImprovement.go.newPol          PolicyIteration          src/PolicyIteration.hs:73:55-144        1099          0    0.0    0.0     0.0    0.0
              policyImprovement.go.(...)          PolicyIteration          src/PolicyIteration.hs:73:55-144        1100          0    0.0    0.0     0.0    0.0
               polFromMap                         PolicyIteration          src/PolicyIteration.hs:42:1-63          1101          0    0.0    0.0     0.0    0.0
-               polFromMap.\                      PolicyIteration          src/PolicyIteration.hs:42:25-62         1102      21952    0.0    0.0     0.0    0.0
-                lookup#                          Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1103      21952    0.0    0.0     0.0    0.0
-                 unArray                         Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1109      57344    0.0    0.0     0.0    0.0
-                 sparseIndex                     Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1110      35392    0.0    0.0     0.0    0.0
-                 hash                            Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1104      21952    0.0    0.0     0.0    0.0
-                  hash                           Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1105      21952    0.0    0.0     0.0    0.0
+               polFromMap.\                      PolicyIteration          src/PolicyIteration.hs:42:25-62         1102      14400    0.0    0.0     0.0    0.0
+                lookup#                          Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1103      14400    0.0    0.0     0.0    0.0
+                 unArray                         Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1109      33408    0.0    0.0     0.0    0.0
+                 sparseIndex                     Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1110      19008    0.0    0.0     0.0    0.0
+                 hash                            Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1104      14400    0.0    0.0     0.0    0.0
+                  hash                           Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1105      14400    0.0    0.0     0.0    0.0
                    hashWithSalt                  Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1106          0    0.0    0.0     0.0    0.0
-                    defaultHashWithSalt          Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1107      21952    0.0    0.0     0.0    0.0
-                     combine                     Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1108      21952    0.0    0.0     0.0    0.0
-                 lookup#.\                       Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1111      21952    0.0    0.0     0.0    0.0
-           policyEvaluation.accumValues.oldVal   PolicyIteration          src/PolicyIteration.hs:66:9-25           848      37828    0.0    0.0     0.0    0.0
-            jacksVTInit                          JacksRentals             src/JacksRentals.hs:40:1-33              851          0    0.0    0.0     0.0    0.0
-             initZeros                           PolicyIteration          src/PolicyIteration.hs:21:1-162          852          0    0.0    0.0     0.0    0.0
-              initZeros.\                        PolicyIteration          src/PolicyIteration.hs:21:27-161         853        196    0.0    0.0     0.0    0.0
-               lookup#                           Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            854        196    0.0    0.0     0.0    0.0
-                unArray                          Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           883        512    0.0    0.0     0.0    0.0
-                sparseIndex                      Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           884        316    0.0    0.0     0.0    0.0
-                hash                             Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            855        196    0.0    0.0     0.0    0.0
-                 hash                            Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          856        196    0.0    0.0     0.0    0.0
-                  hashWithSalt                   Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          857          0    0.0    0.0     0.0    0.0
-                   defaultHashWithSalt           Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          858        196    0.0    0.0     0.0    0.0
-                    combine                      Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          859        196    0.0    0.0     0.0    0.0
-                lookup#.\                        Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           885        196    0.0    0.0     0.0    0.0
+                    defaultHashWithSalt          Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1107      14400    0.0    0.0     0.0    0.0
+                     combine                     Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1108      14400    0.0    0.0     0.0    0.0
+                 lookup#.\                       Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1111      14400    0.0    0.0     0.0    0.0
+           policyEvaluation.accumValues.oldVal   PolicyIteration          src/PolicyIteration.hs:66:9-25           845      24800    0.0    0.0     0.0    0.0
+            jacksVTInit                          JacksRentals             src/JacksRentals.hs:40:1-33              848          0    0.0    0.0     0.0    0.0
+             initZeros                           PolicyIteration          src/PolicyIteration.hs:21:1-162          849          0    0.0    0.0     0.0    0.0
+              initZeros.\                        PolicyIteration          src/PolicyIteration.hs:21:27-161         850        100    0.0    0.0     0.0    0.0
+               lookup#                           Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            851        100    0.0    0.0     0.0    0.0
+                unArray                          Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           880        232    0.0    0.0     0.0    0.0
+                sparseIndex                      Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           881        132    0.0    0.0     0.0    0.0
+                hash                             Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            852        100    0.0    0.0     0.0    0.0
+                 hash                            Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          853        100    0.0    0.0     0.0    0.0
+                  hashWithSalt                   Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          854          0    0.0    0.0     0.0    0.0
+                   defaultHashWithSalt           Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          855        100    0.0    0.0     0.0    0.0
+                    combine                      Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          856        100    0.0    0.0     0.0    0.0
+                lookup#.\                        Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           882        100    0.0    0.0     0.0    0.0
             policyEvaluation.go.newVT            PolicyIteration          src/PolicyIteration.hs:54:17-94          937          0    0.0    0.0     0.0    0.0
              vtFromMap                           PolicyIteration          src/PolicyIteration.hs:24:1-75           938          0    0.0    0.0     0.0    0.0
-              vtFromMap.\                        PolicyIteration          src/PolicyIteration.hs:24:24-74          939      37632    0.0    0.0     0.0    0.0
-               lookup#                           Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            940      37632    0.0    0.0     0.0    0.0
-                unArray                          Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           979      98304    0.0    0.0     0.0    0.0
-                sparseIndex                      Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           980      60672    0.0    0.0     0.0    0.0
-                hash                             Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            941      37632    0.0    0.0     0.0    0.0
-                 hash                            Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          942      37632    0.0    0.0     0.0    0.0
+              vtFromMap.\                        PolicyIteration          src/PolicyIteration.hs:24:24-74          939      24700    0.0    0.0     0.0    0.0
+               lookup#                           Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80            940      24700    0.0    0.0     0.0    0.0
+                unArray                          Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           979      57304    0.0    0.0     0.0    0.0
+                sparseIndex                      Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           980      32604    0.0    0.0     0.0    0.0
+                hash                             Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            941      24700    0.0    0.0     0.0    0.0
+                 hash                            Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          942      24700    0.0    0.0     0.0    0.0
                   hashWithSalt                   Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          943          0    0.0    0.0     0.0    0.0
-                   defaultHashWithSalt           Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          944      37632    0.0    0.0     0.0    0.0
-                    combine                      Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          945      37632    0.0    0.0     0.0    0.0
-                lookup#.\                        Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           981      37632    0.0    0.0     0.0    0.0
-          vtFromMap                              PolicyIteration          src/PolicyIteration.hs:24:1-75           936        193    0.0    0.0     0.0    0.0
-         policyEvaluation.go.delta               PolicyIteration          src/PolicyIteration.hs:54:17-94          845        193    0.0    0.0     0.0    0.0
-         policyEvaluation.go.newVT               PolicyIteration          src/PolicyIteration.hs:54:17-94          935        193    0.0    0.0     0.0    0.0
-     policyImprovement.go.newPol                 PolicyIteration          src/PolicyIteration.hs:73:55-144        1052          4    0.0    0.0     0.0    0.0
+                   defaultHashWithSalt           Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          944      24700    0.0    0.0     0.0    0.0
+                    combine                      Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          945      24700    0.0    0.0     0.0    0.0
+                lookup#.\                        Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66           981      24700    0.0    0.0     0.0    0.0
+          vtFromMap                              PolicyIteration          src/PolicyIteration.hs:24:1-75           936        248    0.0    0.0     0.0    0.0
+         policyEvaluation.go.delta               PolicyIteration          src/PolicyIteration.hs:54:17-94          842        248    0.0    0.0     0.0    0.0
+         policyEvaluation.go.newVT               PolicyIteration          src/PolicyIteration.hs:54:17-94          935        248    0.0    0.0     0.0    0.0
+     policyImprovement.go.newPol                 PolicyIteration          src/PolicyIteration.hs:73:55-144        1053          4    0.0    0.0     0.0    0.0
      policyImprovement.go.stable                 PolicyIteration          src/PolicyIteration.hs:73:55-144         722          4    0.0    0.0     0.0    0.0
-    policyImprovement.evaluatedVT                PolicyIteration          src/PolicyIteration.hs:78:5-48           840          1    0.0    0.0     0.0    0.0
+    policyImprovement.evaluatedVT                PolicyIteration          src/PolicyIteration.hs:78:5-48           837          1    0.0    0.0     0.0    0.0
  CAF:jacksFinalVT                                JacksRentals             src/JacksRentals.hs:38:2-13              662          0    0.0    0.0     0.0    0.0
   jacksFinalVT                                   JacksRentals             src/JacksRentals.hs:38:1-99              716          1    0.0    0.0     0.0    0.0
  CAF:jacksGamma                                  JacksRentals             src/JacksRentals.hs:25:1-10              642          0    0.0    0.0     0.0    0.0
-  jacksGamma                                     JacksRentals             src/JacksRentals.hs:25:1-16              927          1    0.0    0.0     0.0    0.0
+  jacksGamma                                     JacksRentals             src/JacksRentals.hs:25:1-16              924          1    0.0    0.0     0.0    0.0
  CAF:jacksMDP                                    JacksRentals             src/JacksRentals.hs:34:1-8               659          0    0.0    0.0     0.0    0.0
   jacksMDP                                       JacksRentals             src/JacksRentals.hs:34:1-57              719          1    0.0    0.0     0.0    0.0
  CAF:jacksPolInit                                JacksRentals             src/JacksRentals.hs:41:1-12              658          0    0.0    0.0     0.0    0.0
@@ -386,60 +388,60 @@ MAIN                                             MAIN                     <built
    polFromMap                                    PolicyIteration          src/PolicyIteration.hs:42:1-63           728          1    0.0    0.0     0.0    0.0
  CAF:jacksPolInit1                               JacksRentals             <no location info>                       656          0    0.0    0.0     0.0    0.0
   jacksPolInit                                   JacksRentals             src/JacksRentals.hs:41:1-86              742          0    0.0    0.0     0.0    0.0
-   jacksPolInit.\                                JacksRentals             src/JacksRentals.hs:41:57-62             744        196    0.0    0.0     0.0    0.0
+   jacksPolInit.\                                JacksRentals             src/JacksRentals.hs:41:57-62             744        100    0.0    0.0     0.0    0.0
  CAF:jacksPolInit_map                            JacksRentals             <no location info>                       657          0    0.0    0.0     0.0    0.0
   jacksPolInit                                   JacksRentals             src/JacksRentals.hs:41:1-86              740          0    0.0    0.0     0.0    0.0
    fromList                                      Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:598:1-64     741          1    0.0    0.0     0.0    0.0
-    fromList.\                                   Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:598:37-57    745        196    0.0    0.0     0.0    0.0
-     unsafeInsert                                Data.HashMap.Base        Data/HashMap/Base.hs:(784,1)-(814,76)    746        196    0.0    0.0     0.0    0.0
-      unsafeInsert.go                            Data.HashMap.Base        Data/HashMap/Base.hs:(787,5)-(814,76)    753        436    0.0    0.0     0.0    0.0
-       unMArray                                  Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           757        870    0.0    0.0     0.0    0.0
-       unArray                                   Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           761        598    0.0    0.0     0.0    0.0
-       copy                                      Data.HashMap.Array       Data/HashMap/Array.hs:(328,1)-(333,30)   764        236    0.0    0.0     0.0    0.0
-        copy.\                                   Data.HashMap.Array       Data/HashMap/Array.hs:(332,9)-(333,30)   767        236    0.0    0.0     0.0    0.0
-         unArray                                 Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           769        236    0.0    0.0     0.0    0.0
-         unMArray                                Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           768        236    0.0    0.0     0.0    0.0
-       unsafeInsert.go.i                         Data.HashMap.Base        Data/HashMap/Base.hs:805:13-31           765        190    0.0    0.0     0.0    0.0
-        sparseIndex                              Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           766        190    0.0    0.0     0.0    0.0
-       unsafeInsert.go.m                         Data.HashMap.Base        Data/HashMap/Base.hs:804:13-24           760        190    0.0    0.0     0.0    0.0
-       unsafeInsert.go.i                         Data.HashMap.Base        Data/HashMap/Base.hs:811:13-25           774        168    0.0    0.0     0.0    0.0
-       new_                                      Data.HashMap.Array       Data/HashMap/Array.hs:256:1-28           763        118    0.0    0.0     0.0    0.0
-      unsafeInsert.h0                            Data.HashMap.Base        Data/HashMap/Base.hs:786:5-16            747        196    0.0    0.0     0.0    0.0
-       hash                                      Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            748        196    0.0    0.0     0.0    0.0
-        hash                                     Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          749        196    0.0    0.0     0.0    0.0
+    fromList.\                                   Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:598:37-57    745        100    0.0    0.0     0.0    0.0
+     unsafeInsert                                Data.HashMap.Base        Data/HashMap/Base.hs:(784,1)-(814,76)    746        100    0.0    0.0     0.0    0.0
+      unsafeInsert.go                            Data.HashMap.Base        Data/HashMap/Base.hs:(787,5)-(814,76)    753        200    0.0    0.0     0.0    0.0
+       unMArray                                  Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           757        398    0.0    0.0     0.0    0.0
+       unArray                                   Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           761        266    0.0    0.0     0.0    0.0
+       copy                                      Data.HashMap.Array       Data/HashMap/Array.hs:(328,1)-(333,30)   764        132    0.0    0.0     0.0    0.0
+        copy.\                                   Data.HashMap.Array       Data/HashMap/Array.hs:(332,9)-(333,30)   767        132    0.0    0.0     0.0    0.0
+         unArray                                 Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           769        132    0.0    0.0     0.0    0.0
+         unMArray                                Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           768        132    0.0    0.0     0.0    0.0
+       unsafeInsert.go.i                         Data.HashMap.Base        Data/HashMap/Base.hs:805:13-31           765        102    0.0    0.0     0.0    0.0
+        sparseIndex                              Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           766        102    0.0    0.0     0.0    0.0
+       unsafeInsert.go.m                         Data.HashMap.Base        Data/HashMap/Base.hs:804:13-24           760        102    0.0    0.0     0.0    0.0
+       new_                                      Data.HashMap.Array       Data/HashMap/Array.hs:256:1-28           763         66    0.0    0.0     0.0    0.0
+       unsafeInsert.go.i                         Data.HashMap.Base        Data/HashMap/Base.hs:811:13-25           774         64    0.0    0.0     0.0    0.0
+      unsafeInsert.h0                            Data.HashMap.Base        Data/HashMap/Base.hs:786:5-16            747        100    0.0    0.0     0.0    0.0
+       hash                                      Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            748        100    0.0    0.0     0.0    0.0
+        hash                                     Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          749        100    0.0    0.0     0.0    0.0
          hashWithSalt                            Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          750          0    0.0    0.0     0.0    0.0
-          defaultHashWithSalt                    Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          751        196    0.0    0.0     0.0    0.0
-           combine                               Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          752        196    0.0    0.0     0.0    0.0
+          defaultHashWithSalt                    Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          751        100    0.0    0.0     0.0    0.0
+           combine                               Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          752        100    0.0    0.0     0.0    0.0
  CAF:jacksTask                                   JacksRentals             src/JacksRentals.hs:36:1-9               660          0    0.0    0.0     0.0    0.0
   jacksTask                                      JacksRentals             src/JacksRentals.hs:36:1-39              718          1    0.0    0.0     0.0    0.0
  CAF:jacksVTInit                                 JacksRentals             src/JacksRentals.hs:40:1-11              655          0    0.0    0.0     0.0    0.0
-  jacksVTInit                                    JacksRentals             src/JacksRentals.hs:40:1-33              849          1    0.0    0.0     0.0    0.0
-   initZeros                                     PolicyIteration          src/PolicyIteration.hs:21:1-162          850          1    0.0    0.0     0.0    0.0
-    initZeros.\                                  PolicyIteration          src/PolicyIteration.hs:21:27-161         860          0    0.0    0.0     0.0    0.0
-     initZeros.\.\                               PolicyIteration          src/PolicyIteration.hs:21:133-140        862        196    0.0    0.0     0.0    0.0
-     fromList                                    Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:598:1-64     861          1    0.0    0.0     0.0    0.0
-      fromList.\                                 Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:598:37-57    863        196    0.0    0.0     0.0    0.0
-       unsafeInsert                              Data.HashMap.Base        Data/HashMap/Base.hs:(784,1)-(814,76)    864        196    0.0    0.0     0.0    0.0
-        unsafeInsert.go                          Data.HashMap.Base        Data/HashMap/Base.hs:(787,5)-(814,76)    871        436    0.0    0.0     0.0    0.0
-         unMArray                                Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           872        870    0.0    0.0     0.0    0.0
-         unArray                                 Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           874        598    0.0    0.0     0.0    0.0
-         copy                                    Data.HashMap.Array       Data/HashMap/Array.hs:(328,1)-(333,30)   876        236    0.0    0.0     0.0    0.0
-          copy.\                                 Data.HashMap.Array       Data/HashMap/Array.hs:(332,9)-(333,30)   879        236    0.0    0.0     0.0    0.0
-           unArray                               Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           881        236    0.0    0.0     0.0    0.0
-           unMArray                              Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           880        236    0.0    0.0     0.0    0.0
-         unsafeInsert.go.i                       Data.HashMap.Base        Data/HashMap/Base.hs:805:13-31           877        190    0.0    0.0     0.0    0.0
-          sparseIndex                            Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           878        190    0.0    0.0     0.0    0.0
-         unsafeInsert.go.m                       Data.HashMap.Base        Data/HashMap/Base.hs:804:13-24           873        190    0.0    0.0     0.0    0.0
-         unsafeInsert.go.i                       Data.HashMap.Base        Data/HashMap/Base.hs:811:13-25           882        168    0.0    0.0     0.0    0.0
-         new_                                    Data.HashMap.Array       Data/HashMap/Array.hs:256:1-28           875        118    0.0    0.0     0.0    0.0
-        unsafeInsert.h0                          Data.HashMap.Base        Data/HashMap/Base.hs:786:5-16            865        196    0.0    0.0     0.0    0.0
-         hash                                    Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            866        196    0.0    0.0     0.0    0.0
-          hash                                   Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          867        196    0.0    0.0     0.0    0.0
-           hashWithSalt                          Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          868          0    0.0    0.0     0.0    0.0
-            defaultHashWithSalt                  Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          869        196    0.0    0.0     0.0    0.0
-             combine                             Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          870        196    0.0    0.0     0.0    0.0
+  jacksVTInit                                    JacksRentals             src/JacksRentals.hs:40:1-33              846          1    0.0    0.0     0.0    0.0
+   initZeros                                     PolicyIteration          src/PolicyIteration.hs:21:1-162          847          1    0.0    0.0     0.0    0.0
+    initZeros.\                                  PolicyIteration          src/PolicyIteration.hs:21:27-161         857          0    0.0    0.0     0.0    0.0
+     initZeros.\.\                               PolicyIteration          src/PolicyIteration.hs:21:133-140        859        100    0.0    0.0     0.0    0.0
+     fromList                                    Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:598:1-64     858          1    0.0    0.0     0.0    0.0
+      fromList.\                                 Data.HashMap.Strict.Base Data/HashMap/Strict/Base.hs:598:37-57    860        100    0.0    0.0     0.0    0.0
+       unsafeInsert                              Data.HashMap.Base        Data/HashMap/Base.hs:(784,1)-(814,76)    861        100    0.0    0.0     0.0    0.0
+        unsafeInsert.go                          Data.HashMap.Base        Data/HashMap/Base.hs:(787,5)-(814,76)    868        200    0.0    0.0     0.0    0.0
+         unMArray                                Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           869        398    0.0    0.0     0.0    0.0
+         unArray                                 Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           871        266    0.0    0.0     0.0    0.0
+         copy                                    Data.HashMap.Array       Data/HashMap/Array.hs:(328,1)-(333,30)   873        132    0.0    0.0     0.0    0.0
+          copy.\                                 Data.HashMap.Array       Data/HashMap/Array.hs:(332,9)-(333,30)   876        132    0.0    0.0     0.0    0.0
+           unArray                               Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13           878        132    0.0    0.0     0.0    0.0
+           unMArray                              Data.HashMap.Array       Data/HashMap/Array.hs:215:7-14           877        132    0.0    0.0     0.0    0.0
+         unsafeInsert.go.i                       Data.HashMap.Base        Data/HashMap/Base.hs:805:13-31           874        102    0.0    0.0     0.0    0.0
+          sparseIndex                            Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42           875        102    0.0    0.0     0.0    0.0
+         unsafeInsert.go.m                       Data.HashMap.Base        Data/HashMap/Base.hs:804:13-24           870        102    0.0    0.0     0.0    0.0
+         new_                                    Data.HashMap.Array       Data/HashMap/Array.hs:256:1-28           872         66    0.0    0.0     0.0    0.0
+         unsafeInsert.go.i                       Data.HashMap.Base        Data/HashMap/Base.hs:811:13-25           879         64    0.0    0.0     0.0    0.0
+        unsafeInsert.h0                          Data.HashMap.Base        Data/HashMap/Base.hs:786:5-16            862        100    0.0    0.0     0.0    0.0
+         hash                                    Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28            863        100    0.0    0.0     0.0    0.0
+          hash                                   Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45          864        100    0.0    0.0     0.0    0.0
+           hashWithSalt                          Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38          865          0    0.0    0.0     0.0    0.0
+            defaultHashWithSalt                  Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50          866        100    0.0    0.0     0.0    0.0
+             combine                             Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40          867        100    0.0    0.0     0.0    0.0
  CAF:jpThreshold                                 JacksRentals             src/JacksRentals.hs:30:1-11              638          0    0.0    0.0     0.0    0.0
-  jpThreshold                                    JacksRentals             src/JacksRentals.hs:30:1-20              833          1    0.0    0.0     0.0    0.0
+  jpThreshold                                    JacksRentals             src/JacksRentals.hs:30:1-41              833          1    0.0    0.0     0.0    0.0
  CAF:lambda1_rentals                             JacksRentals             src/JacksRentals.hs:19:1-15              649          0    0.0    0.0     0.0    0.0
   lambda1_rentals                                JacksRentals             src/JacksRentals.hs:19:1-19              817          1    0.0    0.0     0.0    0.0
  CAF:lambda1_returns                             JacksRentals             src/JacksRentals.hs:22:1-15              645          0    0.0    0.0     0.0    0.0
@@ -464,23 +466,23 @@ MAIN                                             MAIN                     <built
           policyEvaluation.go                    PolicyIteration          src/PolicyIteration.hs:(54,5)-(59,21)   1171          0    0.0    0.0     0.0    0.0
            policyEvaluation.go.(...)             PolicyIteration          src/PolicyIteration.hs:54:17-94         1173          0    0.0    0.0     0.0    0.0
             vtFromMap                            PolicyIteration          src/PolicyIteration.hs:24:1-75          1174          0    0.0    0.0     0.0    0.0
-             vtFromMap.\                         PolicyIteration          src/PolicyIteration.hs:24:24-74         1175        196    0.0    0.0     0.0    0.0
-              lookup#                            Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1176        196    0.0    0.0     0.0    0.0
-               unArray                           Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1182        512    0.0    0.0     0.0    0.0
-               sparseIndex                       Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1183        316    0.0    0.0     0.0    0.0
-               hash                              Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1177        196    0.0    0.0     0.0    0.0
-                hash                             Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1178        196    0.0    0.0     0.0    0.0
+             vtFromMap.\                         PolicyIteration          src/PolicyIteration.hs:24:24-74         1175        100    0.0    0.0     0.0    0.0
+              lookup#                            Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1176        100    0.0    0.0     0.0    0.0
+               unArray                           Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1182        232    0.0    0.0     0.0    0.0
+               sparseIndex                       Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1183        132    0.0    0.0     0.0    0.0
+               hash                              Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1177        100    0.0    0.0     0.0    0.0
+                hash                             Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1178        100    0.0    0.0     0.0    0.0
                  hashWithSalt                    Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1179          0    0.0    0.0     0.0    0.0
-                  defaultHashWithSalt            Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1180        196    0.0    0.0     0.0    0.0
-                   combine                       Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1181        196    0.0    0.0     0.0    0.0
-               lookup#.\                         Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1184        196    0.0    0.0     0.0    0.0
+                  defaultHashWithSalt            Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1180        100    0.0    0.0     0.0    0.0
+                   combine                       Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1181        100    0.0    0.0     0.0    0.0
+               lookup#.\                         Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1184        100    0.0    0.0     0.0    0.0
            policyEvaluation.go.newVT             PolicyIteration          src/PolicyIteration.hs:54:17-94         1172          0    0.0    0.0     0.0    0.0
  CAF:main13                                      Main                     <no location info>                       695          0    0.0    0.0     0.0    0.0
   main                                           Main                     app/Main.hs:(9,1)-(12,47)                707          0    0.0    0.0     0.0    0.0
    argMaxByFirst                                 OptTools                 src/OptTools.hs:21:1-28                  708          1    0.0    0.0     0.0    0.0
     argMax                                       OptTools                 src/OptTools.hs:(4,1)-(12,109)           709          1    0.0    0.0     0.0    0.0
-     argMax.compareAndReplace                    OptTools                 src/OptTools.hs:(6,5)-(12,109)           713        196    0.0    0.0     0.0    0.0
-      argMax.compareAndReplace.newVal            OptTools                 src/OptTools.hs:7:68-79                  715        195    0.0    0.0     0.0    0.0
+     argMax.compareAndReplace                    OptTools                 src/OptTools.hs:(6,5)-(12,109)           713        100    0.0    0.0     0.0    0.0
+      argMax.compareAndReplace.newVal            OptTools                 src/OptTools.hs:7:68-79                  715         99    0.0    0.0     0.0    0.0
        jacksFinalVT                              JacksRentals             src/JacksRentals.hs:38:1-99             1120          0    0.0    0.0     0.0    0.0
         (...)                                    JacksRentals             src/JacksRentals.hs:38:1-99             1121          0    0.0    0.0     0.0    0.0
          policyImprovement                       PolicyIteration          src/PolicyIteration.hs:(71,1)-(86,42)   1122          0    0.0    0.0     0.0    0.0
@@ -491,18 +493,18 @@ MAIN                                             MAIN                     <built
               policyEvaluation.go                PolicyIteration          src/PolicyIteration.hs:(54,5)-(59,21)   1127          0    0.0    0.0     0.0    0.0
                policyEvaluation.go.(...)         PolicyIteration          src/PolicyIteration.hs:54:17-94         1129          0    0.0    0.0     0.0    0.0
                 vtFromMap                        PolicyIteration          src/PolicyIteration.hs:24:1-75          1130          0    0.0    0.0     0.0    0.0
-                 vtFromMap.\                     PolicyIteration          src/PolicyIteration.hs:24:24-74         1131        195    0.0    0.0     0.0    0.0
-                  lookup#                        Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1132        195    0.0    0.0     0.0    0.0
-                   unArray                       Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1138        509    0.0    0.0     0.0    0.0
-                   sparseIndex                   Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1139        314    0.0    0.0     0.0    0.0
-                   hash                          Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1133        195    0.0    0.0     0.0    0.0
-                    hash                         Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1134        195    0.0    0.0     0.0    0.0
+                 vtFromMap.\                     PolicyIteration          src/PolicyIteration.hs:24:24-74         1131         99    0.0    0.0     0.0    0.0
+                  lookup#                        Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1132         99    0.0    0.0     0.0    0.0
+                   unArray                       Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1138        229    0.0    0.0     0.0    0.0
+                   sparseIndex                   Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1139        130    0.0    0.0     0.0    0.0
+                   hash                          Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1133         99    0.0    0.0     0.0    0.0
+                    hash                         Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1134         99    0.0    0.0     0.0    0.0
                      hashWithSalt                Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1135          0    0.0    0.0     0.0    0.0
-                      defaultHashWithSalt        Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1136        195    0.0    0.0     0.0    0.0
-                       combine                   Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1137        195    0.0    0.0     0.0    0.0
-                   lookup#.\                     Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1140        195    0.0    0.0     0.0    0.0
+                      defaultHashWithSalt        Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1136         99    0.0    0.0     0.0    0.0
+                       combine                   Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1137         99    0.0    0.0     0.0    0.0
+                   lookup#.\                     Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1140         99    0.0    0.0     0.0    0.0
                policyEvaluation.go.newVT         PolicyIteration          src/PolicyIteration.hs:54:17-94         1128          0    0.0    0.0     0.0    0.0
-      argMax.compareAndReplace.valComp           OptTools                 src/OptTools.hs:7:88-122                 714        195    0.0    0.0     0.0    0.0
+      argMax.compareAndReplace.valComp           OptTools                 src/OptTools.hs:7:88-122                 714         99    0.0    0.0     0.0    0.0
       jacksFinalVT                               JacksRentals             src/JacksRentals.hs:38:1-99             1141          0    0.0    0.0     0.0    0.0
        (...)                                     JacksRentals             src/JacksRentals.hs:38:1-99             1142          0    0.0    0.0     0.0    0.0
         policyImprovement                        PolicyIteration          src/PolicyIteration.hs:(71,1)-(86,42)   1143          0    0.0    0.0     0.0    0.0
@@ -555,44 +557,44 @@ MAIN                                             MAIN                     <built
       policyImprovement.go                       PolicyIteration          src/PolicyIteration.hs:(73,5)-(76,26)   1194          0    0.0    0.0     0.0    0.0
        policyImprovement.go.(...)                PolicyIteration          src/PolicyIteration.hs:73:55-144        1196          0    0.0    0.0     0.0    0.0
         polFromMap                               PolicyIteration          src/PolicyIteration.hs:42:1-63          1197          0    0.0    0.0     0.0    0.0
-         polFromMap.\                            PolicyIteration          src/PolicyIteration.hs:42:25-62         1198         14    0.0    0.0     0.0    0.0
-          lookup#                                Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1199         14    0.0    0.0     0.0    0.0
-           unArray                               Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1205         40    0.0    0.0     0.0    0.0
-           sparseIndex                           Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1206         26    0.0    0.0     0.0    0.0
-           hash                                  Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1200         14    0.0    0.0     0.0    0.0
-            hash                                 Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1201         14    0.0    0.0     0.0    0.0
+         polFromMap.\                            PolicyIteration          src/PolicyIteration.hs:42:25-62         1198         10    0.0    0.0     0.0    0.0
+          lookup#                                Data.HashMap.Base        Data/HashMap/Base.hs:509:1-80           1199         10    0.0    0.0     0.0    0.0
+           unArray                               Data.HashMap.Array       Data/HashMap/Array.hs:178:7-13          1205         28    0.0    0.0     0.0    0.0
+           sparseIndex                           Data.HashMap.Base        Data/HashMap/Base.hs:1867:1-42          1206         18    0.0    0.0     0.0    0.0
+           hash                                  Data.HashMap.Base        Data/HashMap/Base.hs:166:1-28           1200         10    0.0    0.0     0.0    0.0
+            hash                                 Data.Hashable.Class      Data/Hashable/Class.hs:522:5-45         1201         10    0.0    0.0     0.0    0.0
              hashWithSalt                        Data.Hashable.Class      Data/Hashable/Class.hs:314:5-38         1202          0    0.0    0.0     0.0    0.0
-              defaultHashWithSalt                Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1203         14    0.0    0.0     0.0    0.0
-               combine                           Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1204         14    0.0    0.0     0.0    0.0
-           lookup#.\                             Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1207         14    0.0    0.0     0.0    0.0
+              defaultHashWithSalt                Data.Hashable.Class      Data/Hashable/Class.hs:290:1-50         1203         10    0.0    0.0     0.0    0.0
+               combine                           Data.Hashable.Class      Data/Hashable/Class.hs:780:1-40         1204         10    0.0    0.0     0.0    0.0
+           lookup#.\                             Data.HashMap.Base        Data/HashMap/Base.hs:509:58-66          1207         10    0.0    0.0     0.0    0.0
        policyImprovement.go.newPol               PolicyIteration          src/PolicyIteration.hs:73:55-144        1195          0    0.0    0.0     0.0    0.0
  CAF:main7                                       Main                     <no location info>                       701          0    0.0    0.0     0.0    0.0
   main                                           Main                     app/Main.hs:(9,1)-(12,47)                706          0    0.0    0.0     0.0    0.0
  CAF:maxCarsLot                                  JacksRentals             src/JacksRentals.hs:27:1-10              640          0    0.0    0.0     0.0    0.0
-  maxCarsLot                                     JacksRentals             src/JacksRentals.hs:27:1-15              711          1    0.0    0.0     0.0    0.0
+  maxCarsLot                                     JacksRentals             src/JacksRentals.hs:27:1-14              711          1    0.0    0.0     0.0    0.0
  CAF:maxChildren                                 Data.HashMap.Base        Data/HashMap/Base.hs:1861:1-11           591          0    0.0    0.0     0.0    0.0
   maxChildren                                    Data.HashMap.Base        Data/HashMap/Base.hs:1861:1-59           771          1    0.0    0.0     0.0    0.0
  CAF:newArray#                                   Data.HashMap.Array       Data/HashMap/Array.hs:97:1-9             594          0    0.0    0.0     0.0    0.0
   newArray#                                      Data.HashMap.Array       Data/HashMap/Array.hs:97:1-26            756          1    0.0    0.0     0.0    0.0
  CAF:poissonMass1                                JacksRentals             <no location info>                       636          0    0.0    0.0     0.0    0.0
-  poissonMass                                    JacksRentals             src/JacksRentals.hs:81:1-129             820          0    0.0    0.0     0.0    0.0
+  poissonMass                                    JacksRentals             src/JacksRentals.hs:83:1-129             820          0    0.0    0.0     0.0    0.0
    factorial                                     JacksRentals             src/JacksRentals.hs:(56,1)-(59,51)       821          1    0.0    0.0     0.0    0.0
  CAF:poissonThreshold                            JacksRentals             src/JacksRentals.hs:31:1-16              637          0    0.0    0.0     0.0    0.0
   poissonThreshold                               JacksRentals             src/JacksRentals.hs:31:1-24              801          1    0.0    0.0     0.0    0.0
  CAF:rentalReward                                JacksRentals             src/JacksRentals.hs:16:1-12              651          0    0.0    0.0     0.0    0.0
-  rentalReward                                   JacksRentals             src/JacksRentals.hs:16:1-17              929          1    0.0    0.0     0.0    0.0
+  rentalReward                                   JacksRentals             src/JacksRentals.hs:16:1-17              926          1    0.0    0.0     0.0    0.0
  CAF:sizeofArray#                                Data.HashMap.Array       Data/HashMap/Array.hs:119:1-12           600          0    0.0    0.0     0.0    0.0
   sizeofArray#                                   Data.HashMap.Array       Data/HashMap/Array.hs:119:1-32           762          1    0.0    0.0     0.0    0.0
  CAF:subkeyMask                                  Data.HashMap.Base        Data/HashMap/Base.hs:1864:1-10           592          0    0.0    0.0     0.0    0.0
   subkeyMask                                     Data.HashMap.Base        Data/HashMap/Base.hs:1864:1-47           754          1    0.0    0.0     0.0    0.0
  CAF:thawArray#                                  Data.HashMap.Array       Data/HashMap/Array.hs:142:1-10           604          0    0.0    0.0     0.0    0.0
-  thawArray#                                     Data.HashMap.Array       Data/HashMap/Array.hs:142:1-28           974          1    0.0    0.0     0.0    0.0
+  thawArray#                                     Data.HashMap.Array       Data/HashMap/Array.hs:142:1-28           972          1    0.0    0.0     0.0    0.0
  CAF:unsafeFreezeArray#                          Data.HashMap.Array       Data/HashMap/Array.hs:101:1-18           595          0    0.0    0.0     0.0    0.0
   unsafeFreezeArray#                             Data.HashMap.Array       Data/HashMap/Array.hs:101:1-44           759          1    0.0    0.0     0.0    0.0
  CAF:unsafeThawArray#                            Data.HashMap.Array       Data/HashMap/Array.hs:116:1-16           599          0    0.0    0.0     0.0    0.0
   unsafeThawArray#                               Data.HashMap.Array       Data/HashMap/Array.hs:116:1-40           773          1    0.0    0.0     0.0    0.0
  CAF:vtThreshold                                 JacksRentals             src/JacksRentals.hs:29:1-11              639          0    0.0    0.0     0.0    0.0
-  vtThreshold                                    JacksRentals             src/JacksRentals.hs:29:1-19              842          1    0.0    0.0     0.0    0.0
+  vtThreshold                                    JacksRentals             src/JacksRentals.hs:29:1-19              839          1    0.0    0.0     0.0    0.0
  CAF:writeArray#                                 Data.HashMap.Array       Data/HashMap/Array.hs:109:1-11           597          0    0.0    0.0     0.0    0.0
   writeArray#                                    Data.HashMap.Array       Data/HashMap/Array.hs:109:1-30           758          1    0.0    0.0     0.0    0.0
  main                                            Main                     app/Main.hs:(9,1)-(12,47)                705          0    0.0    0.0     0.0    0.0

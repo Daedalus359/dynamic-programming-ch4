@@ -24,10 +24,10 @@ lambda2_returns = 2
 
 jacksGamma = 0.9
 
-maxCarsLot = 12 --how many cars may be in the lot at any time?
+maxCarsLot = 6 --how many cars may be in the lot at any time?
 
 vtThreshold = 0.001 --affects accuracy vs runtime of value iteration
-jpThreshold = 0.0001--how high must the probability of an event be for the dynamics function to include it as a possbility
+jpThreshold = (1 - poissonThreshold) ** 2 --0.0001--how high must the probability of an event be for the dynamics function to include it as a possbility
 poissonThreshold = 0.999 --how high must the total probability mass be before poisson stops listing possibilities?
 
 jacksMDP :: MDP EodState CarMoves
@@ -65,7 +65,9 @@ poisson :: Int -> [(Int, Probability)]
 poisson lambda = unfoldr f (0, 0) 
   where
     f (n, totalMass)
-      | totalMass > poissonThreshold = Nothing
+      | totalMass > 1 = error $ "poisson mass with lambda = " ++ (show lambda) ++ " sums to " ++ (show totalMass)
+      | totalMass == 1 = Nothing
+      | totalMass > poissonThreshold = Just $ ((n, 1 - totalMass), (n + 1, 1)) --important to make probability distribution sum to 1
       | otherwise = Just $ ((n, pMass), (n + 1, totalMass + pMass))
         where pMass = poissonMass lambda n
 

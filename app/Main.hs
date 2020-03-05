@@ -8,8 +8,12 @@ import qualified Data.Set as Set
 main :: IO ()
 main = do
   print $ (argMaxByFirst jacksFinalVT eodStates, maximum $ fmap jacksFinalVT $ Set.toList eodStates)
-  print $ fmap jacksFinalPolicy $ ((,) 0) <$> [0 .. maxCarsLot]
+  foldMap p $ reverse [0 .. maxCarsLot]
   print $ jacksFinalVT (maxCarsLot, maxCarsLot)
+
+  print $ fmap jacksFinalPolicy $ ((,) maxCarsLot) <$> [0 .. maxCarsLot]
+
+p i = print $ fmap jacksFinalPolicy $ ((,) i) <$> [0 .. maxCarsLot]
 
 ex_4_1 :: IO Double
 ex_4_1 = undefined
