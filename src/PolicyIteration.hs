@@ -63,20 +63,24 @@ policyEvaluation threshold (MDPTask (MDP states dynamics af) gamma) policy valTa
         --for simplicity, this only ever uses the old value table when calculating new values, although better estimates could exist inside newVT (fix later)
         accumValues state (delta, newVT) = (newDelta, newMap)
           where
-            newVal = deepseq vt $ q_pi dynamics gamma vt state $ policy state
+            newVal = q_pi dynamics gamma vt state $ policy state
             oldVal = vt state
             newDelta = max delta $ abs $ newVal - oldVal
             newMap = HMap.insert state newVal newVT
 
 policyImprovement :: (Hashable s, Eq s, Eq a) => Double -> MDPTask s a -> Policy s a -> ValTable s -> (ValTable s, Policy s a)
-policyImprovement threshold tsk@(MDPTask (MDP states dynamics af) gamma) policy valTable = go policy valTable
+policyImprovement threshold tsk@(MDPTask (MDP states dynamics af) gamma) policy valTable = go (False, valTable, policy)
   where
-    go pol vt = let evt = (evaluatedVT pol vt) in let (stable, newPol) = polFromMap <$> (foldr (accumActions evt pol) (True, HMap.empty) states) in
-      if stable
-        then (evt, newPol)
-        else go newPol evt
+    go (stable, vt, pol) = if stable
+      then (vt, pol)
+      else go $ policyStep threshold tsk pol vt
 
-    evaluatedVT = policyEvaluation threshold tsk
+policyStep :: (Hashable s, Eq s, Eq a) => Double -> MDPTask s a -> Policy s a -> ValTable s -> (Bool, ValTable s, Policy s a)
+policyStep threshold tsk@(MDPTask (MDP states dynamics af) gamma) pol vt = (stable, evt, newPol)
+  where
+    evt = policyEvaluation threshold tsk pol vt
+
+    (stable, newPol) = polFromMap <$> (foldr (accumActions evt pol) (True, HMap.empty) states)
 
     accumActions evt pol state (stableOld, polMapSoFar) = (stableNew, newPolMap)
       where

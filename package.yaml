@@ -41,6 +41,7 @@ executables:
     dependencies:
     - dynamic-progrmamming-ch4
     - containers
+    - hashable
 
 tests:
   dynamic-progrmamming-ch4-test:
