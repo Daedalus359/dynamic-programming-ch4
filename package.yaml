@@ -29,6 +29,7 @@ library:
   - unordered-containers
   - hashable
   - deepseq
+  - vector
 
 executables:
   jacks-exe:

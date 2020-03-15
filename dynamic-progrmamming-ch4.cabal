@@ -1,0 +1,73 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 871cb074a3b7983320497dce2a1149499aea9460bb429b982a6b1440c3497dd8
+
+name:           dynamic-progrmamming-ch4
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/Daedauls359/dynamic-progrmamming-ch4#readme>
+homepage:       https://github.com/Daedauls359/dynamic-progrmamming-ch4#readme
+bug-reports:    https://github.com/Daedauls359/dynamic-progrmamming-ch4/issues
+author:         Kevin Bradner
+maintainer:     kbradner112@gmail.com
+copyright:      none
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/Daedauls359/dynamic-progrmamming-ch4
+
+library
+  exposed-modules:
+      JacksRentals
+      Lib
+      MDP
+      OptTools
+      PolicyIteration
+  other-modules:
+      Paths_dynamic_progrmamming_ch4
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , deepseq
+    , hashable
+    , unordered-containers
+    , vector
+  default-language: Haskell2010
+
+executable jacks-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_dynamic_progrmamming_ch4
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , dynamic-progrmamming-ch4
+    , hashable
+  default-language: Haskell2010
+
+test-suite dynamic-progrmamming-ch4-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_dynamic_progrmamming_ch4
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , dynamic-progrmamming-ch4
+  default-language: Haskell2010

@@ -7,6 +7,7 @@ import Data.List (unfoldr)
 import Data.Maybe (catMaybes)
 import qualified Data.Set as Set
 import qualified Data.HashMap.Strict as HMap
+import qualified Data.Vector as Vec
 
 {-
 Exercise 4.7 and Example 4.2 from Reinforcement Learning: an Introduction, 2 ed, by Sutton and Barto
@@ -31,7 +32,7 @@ jpThreshold = (1 - poissonThreshold) ** 2 --0.0001--how high must the probabilit
 poissonThreshold = 0.999 --how high must the total probability mass be before poisson stops listing possibilities?
 
 jacksMDP :: MDP EodState CarMoves
-jacksMDP = MDP eodStates businessDynamics validCarsToMove
+jacksMDP = MDP (StateSpace eodStates eodIndex) businessDynamics validCarsToMove
 
 jacksTask = MDPTask jacksMDP jacksGamma
 
@@ -44,8 +45,11 @@ jacksPolInit = polFromMap $ HMap.fromList $ fmap (\s -> (s, 0)) $ Set.toList eod
 type EodState = (Int, Int) --how many cars are in locations 1 and 2, respectively, at the end of the day?
 --luckily, (Int, Int) already has an instance of Ord
 
-eodStates :: Set.Set EodState
-eodStates = Set.fromList $ (,) <$> [0 .. maxCarsLot] <*> [0 .. maxCarsLot]
+eodStates :: Vec.Vector EodState
+eodStates = undefined --Set.fromList $ (,) <$> [0 .. maxCarsLot] <*> [0 .. maxCarsLot]
+
+eodIndex :: EodState -> Int
+eodIndex (l1c, l2c) = l1c * maxCarsLot + l2c
 
 type CarMoves = Int --how many cars to move overnight from location 1 to location 2 (negative for other direction)
 

@@ -1,10 +1,9 @@
 module MDP where
 
-import qualified Data.Set as Set
-import qualified Data.Map.Strict as Map
 import Data.Monoid
+import Data.Vector
 
-type StateSpace s = Set.Set s
+data StateSpace s = StateSpace (Vector s) (s -> Int)
 type Reward = Double
 type Probability = Double
 
